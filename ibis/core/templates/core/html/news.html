@@ -1,0 +1,88 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'core/css/news.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+
+    <title>Escuela infantil Ibis - Noticias</title>
+</head>
+<body>
+    {% include 'core/html/bases/header.html' %}
+    <main>
+        <section id="latest-news">
+            <h1>Últimas noticias</h1>
+            <div id="news-container">
+            <div id="new-1">
+                <div class="new-title"><h3 >Lorem ipsum </h3></div>
+                <div class="new-description">
+                    <img class="new-img" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
+                    <div>
+                        <p class="new-description-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor pariatur odio minus cum sed. </p>
+                    </div>
+                </div>  
+            </div>
+
+            <div id="new-2">
+                <div class="new-title"><h3 >Lorem ipsum </h3></div>
+                <div class="new-description">
+                    <img class="new-img" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
+                    <div>
+                        <p class="new-description-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor pariatur odio minus cum sed. </p>  
+                    </div>
+                    
+                </div>  
+            </div>
+            <div id="new-3">
+                <div class="new-title"><h3 >Lorem ipsum </h3></div>
+                <div class="new-description">
+                    <img class="new-img" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
+                    <div>
+                        <p class="new-description-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor pariatur odio minus cum sed. </p>  
+                    </div>
+                </div>  
+            </div>
+
+            <div id="new-4">
+                <div class="new-title"><h3 >Lorem ipsum </h3></div>
+                <div class="new-description">
+                    <img class="new-img" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
+                    <div>
+                        <p class="new-description-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor pariatur odio minus cum sed. </p>  
+                    </div>                
+                </div>  
+            </div>
+
+            <div id="new-5">
+                <div class="new-title"><h3 >Lorem ipsum </h3></div>
+                <div class="new-description">
+                    <img class="new-img" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
+                    <div>
+                        <p class="new-description-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor pariatur odio minus cum sed. </p>  
+                    </div>                
+                </div>  
+            </div>
+            
+            <div id="new-6">
+                <div class="new-title"><h3 >Lorem ipsum </h3></div>
+                <div class="new-description">
+                    <img class="new-img" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
+                    <div>
+                        <p class="new-description-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor pariatur odio minus cum sed. </p>  
+                    </div>
+                </div>  
+            </div>
+           
+        </div>
+        <a href=noticias.html class="see-more"><span>Cargar más noticias</span></a>
+        </section>
+    </main>
+    {% include 'core/html/bases/footer.html' %}
+</body>
+</html>

@@ -1,0 +1,46 @@
+{%load static%}
+
+<script src="{% static 'core/javascript/menufunctions.js' %}"></script>
+<link rel="stylesheet" href="{% static 'core/css/header.css' %}">
+
+<header>
+    <div id="zona-logo">
+        <a href="{% url 'home' %}">
+            <picture>
+                <source srcset="{% static 'core/recursos/imagenes/logo-small.svg' %}" media="(max-width: 480px)">
+                <img id="logo" src="{% static 'core/recursos/imagenes/logo-full.svg' %}">
+            </picture>
+        </a>
+    </div>
+    <nav id="max-menu-navegacion" >
+                <ul id="max-navegation-pages">
+                    <li><a href="{% url 'about' %}">Quiénes somos</a></li>
+                    <li><a href="{% url 'services' %}">Servicios</a></li>
+                    <li><a href="{% url 'contact' %}">Contacto</a></li>
+                    <li><a href="{% url 'users' %}">Zona de usuarios</a></li>
+                </ul>    
+                <ul id="max-navegation-accesibility">
+                    <li><i id="search-icon" class="fas fa-search" onclick="search()"></i></li>
+                    <li><i id="dark-icon" class="far fa-moon" onclick="darkMode()"></i></li>
+                    <li><i id="light-icon" class="far fa-sun" onclick="lightMode()" style="display: none;"></i></li>
+                </ul>
+    </nav>
+   <nav id="min-menu-navegacion" >
+        <div id="min-menu-navegacion_icon__container">
+            <button id="min-menu-navegacion_icon__link" onclick="displayMenu()"><i class="fas fa-bars"></i></button>
+        </div>
+        <div id="min_menu" style="display:none">
+            <ul id="navegation-pages_min">
+                <li><a href="{% url 'about' %}">Quiénes somos</a></li>
+                <li><a href="{% url 'services' %}">Servicios</a></li>
+                <li><a href="{% url 'contact' %}">Contacto</a></li>
+                <li><a href="{% url 'users' %}">Zona de usuarios</a></li>
+            </ul>    
+            <ul id="navegation-accesibility_min">
+                <li><i id="min-search-icon" class="fas fa-search" onclick="search()"></i></li>
+                <li><i id="min-dark-icon" class="far fa-moon" onclick="darkMode()"></i></li>
+                <li><i id="min-light-icon" class="far fa-sun" onclick="lightModeMobile()" style="display: none;"></i></li>
+            </ul>
+        </div>
+    </nav>   
+</header>

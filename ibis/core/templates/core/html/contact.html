@@ -1,0 +1,60 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+    <script src="{% static 'core/javascript/mapconfiguration.js' %}"></script>
+
+    <link rel="stylesheet" href="{% static 'core/css/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+
+    <title>Escuela infantil Ibis - Contacto </title> <!--TODO: CAMBIAR ESTO : AQUI VA EL NOMBRE DE LA NOTICIA SACADO DE LA BD-->
+</head>
+<body>
+    {% include 'core/html/bases/header.html' %}
+    <main>
+        <h1>Contacto</h1>
+        <div id="contact-zone" >
+            <div id="contact-zone__map">
+
+            </div>
+            <div id="contact-zone__form">
+                <h2>Formulario de contacto</h2>
+                <form>
+                    <!-- cada label+input en <p> para poder organizar mejor el espacio -->
+                    <p>
+                        <label for="name">Nombre <abbr title="Campo requerido">*</abbr></label>
+                        <input type="text" id="name" name="name" required><br>
+                    </p>
+                    <p>
+                        <label for="surnames">Apellidos <abbr title="Campo requerido">*</abbr></label>
+                        <input type="text" id="surnames" name="surnames" required><br>
+                    </p>
+                    <p>
+                        <label for="phonenumber">Teléfono</label>
+                        <input type="tel" id="phonenumber" name="phonenumber"><br>
+                    </p>
+                    <p>
+                        <label for="mail">Correo electrónico <abbr title="Campo requerido">*</abbr></label><br>
+                        <input type="email" id="mail" name="mail" required><br>
+                    </p>
+                    <p>
+                        <label for="message">Mensaje <abbr title="Campo requerido">*</abbr></label><br>
+                        <textarea id="message" name="message" required maxlength="1400"></textarea><br>
+                    </p>
+                    <p>
+                        <button type="submit" class="send"><span>Enviar solicitud de contacto</span></button>
+                    </p>
+                </form>
+            </div>
+        </div>
+        
+    </main>
+    {% include 'core/html/bases/footer.html' %}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVSXLFt1fWxGcDArFzBA3xrOlaaVj2SaQ&callback=initMap&libraries=&v=weekly" async></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'core/css/services.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+
+
+    <title>Escuela infantil Ibis - Servicios </title> <!--TODO: CAMBIAR ESTO : AQUI VA EL NOMBRE DE LA NOTICIA SACADO DE LA BD-->
+</head>
+<body>
+    {% include 'core/html/bases/header.html' %}
+    <main>
+        <h1>Servicios</h1>
+        <section id="school-times">
+            <h2>Horarios</h2>
+            <select id="school-times__selector" class="selector">
+                <option value="0">Selecciona un curso:</option>
+                <option>Opt 1</option>
+                <option>Opt 1</option>
+                <option>Opt 1</option>
+                <option>Opt 1</option>
+            </select>
+            <div id="school-times__result">AQUI VA CONTENIDO</div>
+        </section>
+        <section id="school-menus">
+            <h2>Comedor</h2>
+            <select id="school-menus__selector"  class="selector">
+                <option value="0">Selecciona la edad:</option>
+                <option>Opt 1</option>
+                <option>Opt 1</option>
+                <option>Opt 1</option>
+                <option>Opt 1</option>
+            </select>
+            <div id="school-menus__result">AQUI VA CONTENIDO</div>
+           
+        </section>
+        <section id="school-resources">
+            <h2>Recursos</h2>
+            <!-- TODO: ¿COMO MOSTRAR LOS RECURSOS?-->
+        </section>
+        
+    </main>
+    {% include 'core/html/bases/footer.html' %}
+</body>
+</html>

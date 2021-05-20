@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+    <script src="/javascript/accesibilityfunctions.js"></script>
+
+    <link rel="stylesheet" href="/css/new-detail.css">
+    <title>Escuela infantil Ibis - Nombre noticia </title> <!--TODO: CAMBIAR ESTO : AQUI VA EL NOMBRE DE LA NOTICIA SACADO DE LA BD-->
+</head>
+<body>
+    <header>
+        <div id="zona-logo">
+            <a href="index.html">
+                <picture>
+                    <source srcset="/recursos/imagenes/logo-small.svg" media="(max-width: 480px)">
+                    <img id="logo" src="/recursos/imagenes/logo-full.svg">
+                </picture>
+            </a>
+        </div>
+        <nav id="max-menu-navegacion" >
+                    <ul id="max-navegation-pages">
+                        <li><a href="about.html">Quiénes somos</a></li>
+                        <li><a href="services.html">Servicios</a></li>
+                        <li><a href="contact.html">Contacto</a></li>
+                        <li><a href="user-zone.html">Zona de usuarios</a></li>
+                    </ul>    
+                    <ul id="max-navegation-accesibility">
+                        <li><i id="search-icon" class="fas fa-search" onclick="search()"></i></li>
+                        <li><i id="big-icon" class="fas fa-search-plus" onclick="biggerLetter()"></i></li>
+                        <li><i id="small-icon" class="fas fa-search-minus" onclick="smallerLetter()" style="display: none;"></i></li>
+                        <li><i id="dark-icon" class="far fa-moon" onclick="darkMode()"></i></li>
+                        <li><i id="light-icon" class="far fa-sun" onclick="lightMode()" style="display: none;"></i></li>
+                    </ul>
+        </nav>
+       <nav id="min-menu-navegacion" >
+            <div id="min-menu-navegacion_icon__container">
+                <button id="min-menu-navegacion_icon__link" onclick="displayMenu()"><i class="fas fa-bars"></i></button>
+            </div>
+            <div id="min_menu" style="display:none">
+                <ul id="navegation-pages_min">
+                    <li><a href="about.html">Quiénes somos</a></li>
+                    <li><a href="">Servicios</a></li>
+                    <li><a href="">Contacto</a></li>
+                    <li><a href="">Zona de usuarios</a></li>
+                </ul>    
+                <ul id="navegation-accesibility_min">
+                    <li><i id="min-search-icon" class="fas fa-search" onclick="search()"></i></li>
+                    <li><i id="min-big-icon" class="fas fa-search-plus" onclick="biggerLetter()"></i></li>
+                    <li><i id="min-small-icon" class="fas fa-search-minus" onclick="smallerLetter()" style="display: none;"></i></li>
+                    <li><i id="min-dark-icon" class="far fa-moon" onclick="darkMode()"></i></li>
+                    <li><i id="min-light-icon" class="far fa-sun" onclick="lightModeMobile()" style="display: none;"></i></li>
+                </ul>
+            </div>
+        </nav>   
+    </header>
+    <main>
+        <div id="image-zone"></div>
+            <h1 id="image-zone__title">Lorem ipsum</h1>
+            <picture>
+                <source srcset="/recursos/imagenes/pexels-artem-podrez-6942769.jpg" media="(max-width: 480px)" class="image-zone__image">
+                <img class="image-zone__image" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
+            </picture>
+        </div>
+        <section id="new-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </section>
+        <!-- Esta sección se hará visible en caso de que la noticia en cuestión tenga algún elemento multimedia -->
+        <h2>Galeria</h2>
+        <section id="new-gallery" >
+            <video></video>
+        </section>
+        
+    </main>
+    <footer>
+        <!-- Footer a tamaño completo y medio -->
+    <div id="footer-max">
+        <div id="footer-max_contact-and-logo">
+            <ul id="footer-max_elements-list">
+                <li>
+                        <p id="footer-max_contact-call">Llámanos</p>
+                        <p id="footer-max_number">+34 123123123</p>
+                </li>
+                <li>
+                    <img id="footer-max_logo-footer" src="/recursos/imagenes/logo-full.svg">
+                </li>
+                <li>
+                    <p id="footer-max_find-us">¿Dónde encontrarnos?</p>
+                    <p id="footer-max_address">C/ Ficticia 1, Cádiz</p>
+                </li>
+            </ul>
+        </div>
+        <div id="footer-max_social-media">
+            <div class="circle"><a id="footer-max_social-media_instagram" class="social-link"><i class="fab fa-instagram"></i></a></span></div>
+            <div class="circle"><a id="footer-max_social-media_facebook" class="social-link"><i class="fab fa-facebook-f"></i></a></div>
+            <div class="circle"><a id="footer-max_social-media_twitter" class="social-link"><i class="fab fa-twitter"></i></a>  </div>
+        </div>
+        <div id="footer-max_other-links" >
+            <ul id="footer-max_other-links-list">
+                <li><p>@Marina Ocaña 2021</p></li>
+                <li><a href="" class="other-links-link">Mapa del sitio</a></li>
+                <li><a href="" class="other-links-link">FAQ</a><a href=""></a><a href=""></a></li>
+                <li><a href="" class="other-links-link">Política de privacidad</a><a href=""></a></li>
+                <li><a href="" class="other-links-link">Términos de uso</a></li>
+            </ul>
+        
+        </div>
+    </div>
+    <!-- Footer que se va a mostrar en dispositivos móviles -->
+    <div id="footer-min">
+        <div id="footer-min_contact-and-logo">
+            <img id="footer-min_logo" src="/recursos/imagenes/logo-small.svg"></img>
+            
+            <div id="footer-min_contact">
+                <p id="footer-min_contact-call">Llámanos</p>
+                <p id="footer-min_number">+34 123123123</p>
+                    
+                <p id="footer-min_find-us">¿Dónde encontrarnos?</p>
+                <p id="footer-min_address">C/ Ficticia 1, Cádiz</p>
+            </div> 
+
+               
+            <div id="footer-min_social-media">
+                <div class="circle"><a id="footer-min_social-media_instagram" class="social-link"><i class="fab fa-instagram"></i></a></span></div></br>
+                <div class="circle"><a id="footer-min_social-media_facebook" class="social-link"><i class="fab fa-facebook-f"></i></a></div><br>
+                <div class="circle"><a id="footer-min_social-media_twitter" class="social-link"><i class="fab fa-twitter"></i></a>  </div><br>
+            </div>
+                
+           
+        </div>
+        <div id="footer-min_other-links" >
+            <ul id="footer-min_other-links-list">
+                <li><p>@Marina Ocaña 2021</p></li>
+                <li><a href="" class="other-links-link">Mapa del sitio</a></li>
+                <li><a href="" class="other-links-link">FAQ</a><a href=""></a><a href=""></a></li>
+                <li><a href="" class="other-links-link">Política de privacidad</a><a href=""></a></li>
+                <li><a href="" class="other-links-link">Términos de uso</a></li>
+            </ul>
+
+        </div>
+    </div>
+    </footer>
+</body>
+</html>
