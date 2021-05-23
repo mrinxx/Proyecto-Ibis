@@ -1,0 +1,87 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+    <script src="{% static 'core/javascript/registrationactions.js'%}" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'core/css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+
+    <title>Registro-Escuela infantil Ibis</title>
+</head>
+<body>
+    {% include 'core/html/bases/header.html' %}
+    <main>
+        <h1>Formulario de registro</h1>
+        <div id="formcontainer">
+            <form onsubmit=processform()>
+                <fieldset id="code">
+                    <legend>Código de centro</legend>
+                    <p><small>En la siguiente casilla debe introducir el código que se le ha hecho llegar desde el centro</small></p>
+                    <p>
+                        <label for="code">Código:</label><br>
+                        <input type="text" id="code" name="code" >
+                    </p>
+                </fieldset>
+                <fieldset id="personal">
+                    <legend>Datos personales</legend>
+                    <p>
+                        <label for="dni">DNI:</label><br>
+                        <input type="text" id="dni" name="dni" disabled>
+                    </p>
+                    <p>
+                        <label for="name">Nombre:</label><br>
+                        <input type="text" id="name" name="name" disabled>
+                    </p>
+                    <p>
+                        <label for="lastname">Apellidos:</label><br>
+                        <input type="text" id="lastname" name="lastname" disabled>
+                    </p>
+                    <p>
+                        <label for="birth-date">Fecha de nacimiento</label><br>
+                        <input type="date" id="birth-date" name="birth-date" disabled>
+                    </p>
+                    <p>
+                        <label for="address">Dirección:</label><br>
+                        <input type="text" id="address" name="address" disabled>
+                    </p>
+                </fieldset>
+                <fieldset id="contact.html">
+                    <legend>Datos de contacto</legend>
+                    <p>
+                        <label for="email">Correo electrónico:</label><br>
+                        <input type="email" id="email" name="email" >
+                    </p>
+                    <p>
+                        <label for="phonenumber">Número de teléfono</label><br>
+                        <input type="tel" id="phonenumber" name="phonenumber" maxlength="9">
+                    </p>
+                </fieldset>
+                <fieldset id="image">
+                    <legend>Imagen de usuario: </legend>
+                    <p>¿Quiere añadir una imagen de perfil? Siéntase libre de hacerlo</p>
+                    <label for="userimage">Imagen:</label>
+                    <input type="file" id="userimage" name="userimage"  accept="image/*">
+                </fieldset>
+                <fieldset id="termsandconditions">
+                    <legend>Consentimientos</legend>
+                    <input type="checkbox" id="privacitypolicy" name="privacitypolicy"><label from="privacitypolicy">He leído y acepto la política de privacidad de la empresa</label><br>
+                    <input type="checkbox" id="terms" name="terms"><label from="terms">He leído y acepto los términos y condiciones</label><br>
+                    <input type="checkbox" id="comunications" name="comunications"><label from="comunications">Deseo recibir información acerca de las novedades y eventos de Ibis</label>
+
+                </fieldset>
+                
+                <p>
+                    <button type="submit" class="send"><span>Darse de alta</span></button>
+                </p>
+                
+            </form>
+        </div>
+    </main>
+    {% include 'core/html/bases/footer.html' %}
+</body>

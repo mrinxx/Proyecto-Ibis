@@ -30,7 +30,7 @@ h1{
   
 .see-more {
     position: relative;
-    margin-left: 45vw;
+    margin-left: 42.5vw;
     padding: 19px;
     transition: all 0.2s ease;
   }
@@ -59,9 +59,7 @@ h1{
     background: #FAA81D;
   }
 
-
-
-#latest-news{
+main{
     margin-bottom:5% ;
 }
 #news-container{
@@ -189,6 +187,7 @@ h1{
 
     /*CONTENIDO DE LA PÁGINA*/
     
+   
 
     .see-more{
         background-color: #FAA81D;
@@ -294,7 +293,9 @@ h1{
         width: 0%;
         background: #F9F9F8;
       }
-
+    h1{
+        font-size: 5em;
+    }
     /*Cambio de footer*/
     #footer-max{
         display:none;

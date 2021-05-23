@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
-
+    <script src="{% static 'core/javascript/newsactions.js'%}" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'core/css/news.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
 
@@ -16,72 +16,11 @@
 <body>
     {% include 'core/html/bases/header.html' %}
     <main>
-        <section id="latest-news">
             <h1>Últimas noticias</h1>
-            <div id="news-container">
-            <div id="new-1">
-                <div class="new-title"><h3 >Lorem ipsum </h3></div>
-                <div class="new-description">
-                    <img class="new-img" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
-                    <div>
-                        <p class="new-description-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor pariatur odio minus cum sed. </p>
-                    </div>
-                </div>  
-            </div>
-
-            <div id="new-2">
-                <div class="new-title"><h3 >Lorem ipsum </h3></div>
-                <div class="new-description">
-                    <img class="new-img" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
-                    <div>
-                        <p class="new-description-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor pariatur odio minus cum sed. </p>  
-                    </div>
-                    
-                </div>  
-            </div>
-            <div id="new-3">
-                <div class="new-title"><h3 >Lorem ipsum </h3></div>
-                <div class="new-description">
-                    <img class="new-img" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
-                    <div>
-                        <p class="new-description-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor pariatur odio minus cum sed. </p>  
-                    </div>
-                </div>  
-            </div>
-
-            <div id="new-4">
-                <div class="new-title"><h3 >Lorem ipsum </h3></div>
-                <div class="new-description">
-                    <img class="new-img" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
-                    <div>
-                        <p class="new-description-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor pariatur odio minus cum sed. </p>  
-                    </div>                
-                </div>  
-            </div>
-
-            <div id="new-5">
-                <div class="new-title"><h3 >Lorem ipsum </h3></div>
-                <div class="new-description">
-                    <img class="new-img" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
-                    <div>
-                        <p class="new-description-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor pariatur odio minus cum sed. </p>  
-                    </div>                
-                </div>  
-            </div>
-            
-            <div id="new-6">
-                <div class="new-title"><h3 >Lorem ipsum </h3></div>
-                <div class="new-description">
-                    <img class="new-img" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
-                    <div>
-                        <p class="new-description-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor pariatur odio minus cum sed. </p>  
-                    </div>
-                </div>  
-            </div>
-           
-        </div>
-        <a href=noticias.html class="see-more"><span>Cargar más noticias</span></a>
-        </section>
+            <div id="alert" class="alert" style="display:none"><p>¡Todavía no hay nada por aquí. Revíselo en otro momento!</p></div>
+            <div id="news-container"></div>
+        <a id="charge-news" class="see-more" onclick="charge()"><span>Cargar más noticias</span></a>
+        
     </main>
     {% include 'core/html/bases/footer.html' %}
 </body>

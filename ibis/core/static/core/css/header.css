@@ -39,7 +39,8 @@ body{
 #max-menu-navegacion{
     background-color:#FAB041;
     min-height: 9vh;
-    border:3px solid black;
+    border-top:3px solid black;
+    border-bottom:3px solid black;
     font-family: 'montserrat',serif,Arial, Helvetica, sans-serif;
     font-weight: 800; 
 
@@ -49,6 +50,7 @@ body{
 
 #max-navegation-pages {
     display: inline-block;
+    padding-inline-start: 33px;
     list-style-type: none;
     width: 80%;
 
@@ -61,11 +63,13 @@ body{
 }
 
 #max-navegation-accesibility {
-    display: inline-block;
-    margin-top: 2%;
+    
+    margin-top: 1.5%;
     list-style-type: none;
+    padding-inline-start: 25px;
     display: flex;
-    padding-inline-start: 0px;
+    justify-content: space-between;
+    width: 20%;
 
 
 }

@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+   <script src="{% static 'core/javascript/servicesactions.js'%}" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{% static 'core/css/services.css' %}">
+    
     <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/services.css' %}">
 
-
-    <title>Escuela infantil Ibis - Servicios </title> <!--TODO: CAMBIAR ESTO : AQUI VA EL NOMBRE DE LA NOTICIA SACADO DE LA BD-->
+    <title>Escuela infantil Ibis - Servicios </title>
 </head>
 <body>
     {% include 'core/html/bases/header.html' %}
@@ -20,29 +21,27 @@
         <h1>Servicios</h1>
         <section id="school-times">
             <h2>Horarios</h2>
-            <select id="school-times__selector" class="selector">
+           
+            <select id="school-times__selector" name="school-times__selector" class="selector">
                 <option value="0">Selecciona un curso:</option>
-                <option>Opt 1</option>
-                <option>Opt 1</option>
-                <option>Opt 1</option>
-                <option>Opt 1</option>
             </select>
-            <div id="school-times__result">AQUI VA CONTENIDO</div>
+            <div id="alertTimetables" class="alert" style="display:none"><p>¡Todavía no hay nada por aquí. Revíselo en otro momento!</p></div>
+            <div id="school-times__result"></div>
         </section>
         <section id="school-menus">
             <h2>Comedor</h2>
+            <div id="alertMenus" class="alert" style="display:none"><p>¡Todavía no hay nada por aquí. Revíselo en otro momento!</p></div>
+
             <select id="school-menus__selector"  class="selector">
                 <option value="0">Selecciona la edad:</option>
-                <option>Opt 1</option>
-                <option>Opt 1</option>
-                <option>Opt 1</option>
-                <option>Opt 1</option>
             </select>
-            <div id="school-menus__result">AQUI VA CONTENIDO</div>
+            <div id="school-menus__result"></div>
            
         </section>
         <section id="school-resources">
             <h2>Recursos</h2>
+            <div id="alertResources" class="alert" style="display:none"><p>¡Todavía no hay nada por aquí. Revíselo en otro momento!</p></div>
+
             <!-- TODO: ¿COMO MOSTRAR LOS RECURSOS?-->
         </section>
         

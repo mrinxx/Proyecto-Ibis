@@ -23,7 +23,7 @@ body{
 #events h2,#latest-news h2{
     font-family: 'Abril Fatface',serif,Arial, Helvetica, sans-serif;
     font-size: 3em;
-    margin-left:50px;
+    margin-left:60px;
 }
 
 #events div{
@@ -85,7 +85,7 @@ a {
   
 .see-more {
     position: relative;
-    margin-left: 45vw;
+    margin-left: 42.5vw;
     padding: 19px;
     transition: all 0.2s ease;
   }
@@ -136,7 +136,7 @@ a {
 
 .new-title{
     background-color: #FAA81D;
-    border: 2px solid black;
+    border: 3px solid black;
     font-family: 'Abril Fatface',serif,Arial, Helvetica, sans-serif;
     font-size: 1.4em;
     border-top-left-radius: 10px;
@@ -151,7 +151,7 @@ a {
 }
 
 .new-description{
-    border: 2px solid black;
+    border: 3px solid black;
     border-top: 0;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -249,7 +249,7 @@ a {
     
     
     .new-description{
-        border: 2px solid black;
+        border: 3px solid black;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         border-bottom-left-radius: 10px;

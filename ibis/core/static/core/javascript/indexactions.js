@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
     //En esta petición se piden los tres primeros eventos que haya en la base de datos, en caso de que haya se crea el elemento
     //donde se visualiza y en caso contrario se muestra una alerta
@@ -16,10 +15,10 @@ $(document).ready(function(){
                 document.getElementById("see-more__events").style="display:none";
                 createAlert("alertEvent");
             }else{
-                for(element of json){
+                for(element of jsonEvents){
                     let container=document.createElement("div");
                     container.className="event-container";
-                    let date=new Date(element.fields.event_date);
+                    let date=new Date(element.fields.date);
                     
                     let containerdate=document.createElement("div");
                     containerdate.className="date";
@@ -43,7 +42,7 @@ $(document).ready(function(){
                     let containerdescription=document.createElement("div");
                     containerdescription.className="event";
                     let descriptiontext=document.createElement("p");
-                    descriptiontext.textContent=element.fields.event_Description;
+                    descriptiontext.textContent=element.fields.Description;
 
                     containerdescription.appendChild(descriptiontext);
                     container.appendChild(containerdescription);
@@ -57,14 +56,14 @@ $(document).ready(function(){
         failure: function(data){
             console.log("failure");
             console.log(data);
-        },
+        }
     });
     $.ajax({
         url: '/getfirstnews',
         method: 'GET',
         dataType: 'json',
         success: function (data){
-            let jsonNews=JSON.parse(data.news);
+            let jsonNews=JSON.parse(data.news).reverse();
 
             if(jsonNews.length==0){
                 document.getElementById("see-more__news").style="display:none";
@@ -77,7 +76,7 @@ $(document).ready(function(){
                     containertitle.className="new-title";
 
                     let newtitle=document.createElement("h3");
-                    newtitle.textContent=element.fields.new_title;
+                    newtitle.textContent=element.fields.title;
                     
                     containertitle.appendChild(newtitle);
                     containernew.appendChild(containertitle);
@@ -87,13 +86,14 @@ $(document).ready(function(){
 
                     let containerdescriptiontext=document.createElement("div");
                     let text=document.createElement("p");
-                    text.textContent=element.fields.new_subtitle;
+                    text.textContent=element.fields.subtitle;
                     text.className="new-description-text";
                     containerdescriptiontext.appendChild(text);
 
                     let principalimg=document.createElement("img");
                     principalimg.className="new-img";
-                    principalimg.src=element.fields.new_media1;
+                    //Aunque no es necesario, sin media/ no muestra la imagen
+                    principalimg.src="/media/"+element.fields.media1;
 
                     containerdescription.appendChild(principalimg);
                     containerdescription.appendChild(containerdescriptiontext);
@@ -113,8 +113,6 @@ $(document).ready(function(){
 });
 
 function createAlert(divToShow){
-
-    let notElementsWarn=document.getElementById(divToShow)
-    notElementsWarn.style="display:block;border: 2px solid black;text-align: center;width: 80%;height: 6vh;margin: auto;border-radius: 10px;background-color: #FAA81D;font-weight: 800;"
-
+    let notElementsWarn=document.getElementById(divToShow);
+    notElementsWarn.style="display:block;border: 3px solid black;text-align: center;width: 85.5%;height:70px;margin: auto;border-radius: 10px;background-color: #FAA81D;font-weight: 800;margin-bottom:5%"
 }

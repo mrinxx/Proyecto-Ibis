@@ -19,7 +19,9 @@ body{
 
 /*Cuerpo de la página*/
 
-
+main{
+    margin-bottom: 5%;
+}
 h1{
     font-family: 'Abril Fatface',serif,Arial, Helvetica, sans-serif;
     font-size:9em;
@@ -51,6 +53,7 @@ h1{
     margin-right: -2%;
     min-height:60vw;
     z-index:1;
+
 }
 
 #login-zone__form form{
@@ -70,10 +73,22 @@ input{
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
-    border-bottom: 2px solid black;
-    width: 50%;
+    border-bottom: 3px solid black;
+    width: 90%;
     outline: none;
-    }
+}
+#see_pass{
+    /*Limpieza de estilos por defecto de un botón*/
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+
+    margin-left:-7%;
+}
 .send {
     position: relative;
     transition: all 0.2s ease;
@@ -107,15 +122,88 @@ input{
     background: #FAA81D;
 }
 
+#alert{   
+    background-color: #FAA81D;
+    border: 3px solid black;
+    border-radius: 10px;
+    display:block;
+    font-weight: 800;
+    font-size:0.5em;
+    height:70px;margin: auto;
+    margin-bottom:5%;
+    margin-top:10%;
+    text-align: center;
+    width: 85.5%;
+}
+
+#alert p{
+    padding-left: 2%;
+    padding-right: 2%;
+}
 
 /*MEDIA QUERIES*/
 
 @media screen and (max-width:1024px){
-
+    .send{
+        background-color: #FAA81D;
+        border: 3px solid black;
+        border-radius: 10px;
+        display: inline-block;
+        font-weight: 800;
+        margin: auto auto;
+        margin-top: 2%;
+        padding: 1%;
+    }
+     /* Elemento de color */
+     .send:before {
+        display: none;
+    
+      }
+    
+    .send span {
+        position: relative;
+        font-size: 16px;
+        font-weight: 900;
+      }
+      
+    .send:hover:before {
+        width: 0%;
+        background: #F9F9F8;
+      }
 }
 
 @media screen and (max-width:480px){
+    h1{
+        font-size: 6em;
+    }
+    #login-zone{
+        display:flex;
+        flex-direction: column-reverse; 
+    }
+    #login-zone__media{
+
+        width:100%;
+        min-height:70vw;
+    }
     
+    #login-zone__form{
+        width:90%;
+        margin-top:-15%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    
+    #login-zone__form form{
+        margin-left: 10%;
+    }
+    #alert{   
+
+        height:80px;
+        margin-bottom: 10%;
+    }
+    
+
+
 }
 
 
