@@ -114,13 +114,14 @@ main{
 
 .new-description-text{
     position: absolute;
-    text-align: center;
+    text-align: left;
     font-weight:600 ;
     letter-spacing: 2px;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%); /*Reposiciono el texto*/
     width: 100%;
+    padding: 4%;
 }
 
 

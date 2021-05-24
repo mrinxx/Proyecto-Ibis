@@ -11,25 +11,26 @@
     <link rel="stylesheet" href="{% static 'core/css/new-detail.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
 
-    <title>Escuela infantil Ibis - Nombre noticia </title> <!--TODO: CAMBIAR ESTO : AQUI VA EL NOMBRE DE LA NOTICIA SACADO DE LA BD-->
+    <title>Escuela infantil Ibis - {{new.title}} </title> 
 </head>
 <body>
     {% include 'core/html/bases/header.html' %}
     <main>
-        <div id="image-zone"></div>
-            <h1 id="image-zone__title">Lorem ipsum</h1>
+        <div id="image-zone">
+            
             <picture>
                 <source srcset="/recursos/imagenes/pexels-artem-podrez-6942769.jpg" media="(max-width: 480px)" class="image-zone__image">
                 <img class="image-zone__image" src="/recursos/imagenes/pexels-artem-podrez-6942769.jpg">
             </picture>
+            <h1 id="image-zone__title">Lorem ipsum</h1>
         </div>
         <section id="new-content">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            
         </section>
         <!-- Esta sección se hará visible en caso de que la noticia en cuestión tenga algún elemento multimedia -->
         <h2>Galeria</h2>
+        {{new.title}}
         <section id="new-gallery" >
             <video></video>
         </section>

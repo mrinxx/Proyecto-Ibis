@@ -9,7 +9,7 @@ let newsdisplayed=0;
          -Si hay más de 6 noticias -> Se cogen las primeras
          -Si hay entre 1 y 5 noticias -> Se cogen TODAS */
      $.ajax({
-         url:'/getnews',
+         url:'/news/getnews',
          method: 'GET',
          dataType: 'json',
          success: function (data){
@@ -36,7 +36,6 @@ let newsdisplayed=0;
                     }
                 }  
                 else if(jsonNews.length>=1 && jsonNews.length<=6){
-                    console.log("si");
                     document.getElementById("charge-news").style="display:none";
                     for(element of jsonNews){
                         createView(element);
@@ -55,7 +54,7 @@ let newsdisplayed=0;
 que se están mostrando en la página.
 Se comienza procesando la noticia que ocupa el lugar en el que se han dejado de procesar las anteriores
 Se suma uno a las noticias mostradas y cuando hay 6 más, se termina */
-debugger;
+
 function charge(){
     console.log(newsdisplayed);
     let auxcont=newsdisplayed;
@@ -91,9 +90,7 @@ function createAlert(divToShow){
 function createView(element){
     let containernew=document.createElement("div");
     containernew.id=element.fields.title;
-    // containernew.onclick=function() {
-    //     window.location="{% url newdetails x %}".replace(/x/,.element.fields.title);
-    // }
+
     
     let containertitle=document.createElement("div");
         containertitle.className="new-title";
@@ -106,9 +103,12 @@ function createView(element){
                     
         let containerdescription=document.createElement("div");
         containerdescription.className="new-description";
+        containerdescription.id=element.fields.title;
+        // containerdescription.onclick="test()";
 
         let containerdescriptiontext=document.createElement("div");
-        let text=document.createElement("p");
+        let text=document.createElement("a");
+        text.href="details/"+element.pk;
         text.textContent=element.fields.subtitle;
         text.className="new-description-text";
         containerdescriptiontext.appendChild(text);
@@ -125,6 +125,16 @@ function createView(element){
         document.getElementById("news-container").appendChild(containernew);
 }
 
-// $('.new-description').on('click',function () {
-//     alert("hola");
+
+// $(document).on("click",".new-description", function () {
+//     // var clickedBtnID = $(this).attr('id'); // or var clickedBtnID = this.id
+//     // alert('you clicked on button #' + clickedBtnID);
+//         // Generate URL without "id" bit
+//         var url = "{% url 'details' %}";
+    
+//         var id = $(this).attr('id');
+    
+//         // Construct the full URL with "id"
+//         document.location.href = "details/"+id;
 // });
+ 

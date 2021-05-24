@@ -3,20 +3,7 @@ from django.db import models
 # Create your models here.
 #Modelos que se vana  migrar a la base de datos y que sirven para formae los elementos de la web
 
-class New(models.Model):
-    id=models.AutoField(primary_key=True) #Id autoincremental
-    title=models.CharField(max_length=100)
-    subtitle=models.CharField(max_length=100)
-    content=models.CharField(max_length=1400)
-    media1=models.ImageField(upload_to="news")
-    #Estas imágenes no son obligatorias, solo lo es una para el encabezado de la noticia
-    media2=models.ImageField(blank=True)
-    media3=models.ImageField(blank=True)
-    media4=models.ImageField(blank=True)
-    media5=models.ImageField(blank=True)
-    media6=models.ImageField(blank=True)
-    new_created_at=models.DateField(auto_now_add=True)
-    new_updated_at=models.DateField(auto_now=True)
+
 
 class Event(models.Model):
     id=models.AutoField(primary_key=True)
@@ -68,3 +55,39 @@ class Menu(models.Model):
     menu_image=models.ImageField(upload_to="menus")
     menu_created_at=models.DateField(auto_now_add=True)
     menu_updated_at=models.DateField(auto_now=True)
+
+OPTIONS=[
+     ("no", 'no'),
+     ("si", 'si'),
+]
+class Guardian(models.Model):
+    guardiancode=models.CharField(primary_key=True,max_length=10)
+    dni=models.CharField(unique=True,max_length=9)
+    name=models.CharField(max_length=50)
+    last_name=models.CharField(max_length=150)
+    birth_date=models.DateField()
+    address=models.CharField(max_length=200)
+    city=models.CharField(max_length=50)
+    image=models.ImageField(upload_to="legal-guardian",blank=True)
+    email=models.EmailField()
+    phone=models.CharField(max_length=9)
+    privacity=models.CharField(choices=OPTIONS,default="no",max_length=2,blank=True)
+    terms=models.CharField(choices=OPTIONS,default="no",max_length=2,blank=True)
+    newsletter=models.CharField(choices=OPTIONS,default="no",max_length=2,blank=True)
+    activated=models.CharField(choices=OPTIONS,default="no",max_length=2)
+    guardian_created_at=models.DateField(auto_now_add=True)
+    guardian_updated_at=models.DateField(auto_now=True)
+
+class Alumn(models.Model):
+    id=models.AutoField(primary_key=True)
+    dni=models.CharField(unique=True,max_length=9)
+    name=models.CharField(max_length=50)
+    last_name=models.CharField(max_length=150)
+    birth_date=models.DateField()
+    address=models.CharField(max_length=200)
+    city=models.CharField(max_length=50)
+    image=models.ImageField(upload_to="guardians",blank=True)
+    classroom=models.CharField(choices=AGE_CLASS,default="1E",max_length=2)
+    legal_tutor=models.ForeignKey(Guardian, on_delete=models.CASCADE)
+    alumn_created_at=models.DateField(auto_now_add=True)
+    alumn_updated_at=models.DateField(auto_now=True)

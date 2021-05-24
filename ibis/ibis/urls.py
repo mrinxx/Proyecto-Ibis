@@ -19,6 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     # URL propias de django
     path('admin/', admin.site.urls),
-    path('',include('core.urls')) #link a las URL de mi aplicación
-    
+    path('',include('core.urls')), #link a las URL de mi aplicación
+    path('news/',include('news.urls'))
 ]

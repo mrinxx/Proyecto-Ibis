@@ -11,15 +11,16 @@ urlpatterns = [
     path('services/', views.services, name="services"),
     path('contact/', views.contact, name="contact"),
     path('login/', views.users, name="users"),
-    path('news/', views.news, name="news"),
-    path('newdetails/<str:newtitle>',views.newDetails,name="newdetails"),
+    # path('news/', views.news, name="news"),
+    # path('details/<int:id>/',views.details,name="details"),
     path('register/',views.register,name="register"),
     path('getfirstevents',views.firstEvents,name="getfirstevents"),
-    path('getfirstnews',views.firstNews,name="getfirstnews"),   
-    path('getnews',views.getNews,name="getnews"),
+
     path('getevents',views.getEvents,name="getevents"),
     path('gettimetables',views.getTimetables,name="gettimetables"),
     path('getmenus',views.getMenus,name="getmenus"),
+    path('guardiandetails',views.guardianDetails,name="guardiandetails"),
+    # path('guardianregister',views.handleGuardianRegister,name="guardianregister")
     # path('getresources',views.getResources,name="getresources"),
 ]
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

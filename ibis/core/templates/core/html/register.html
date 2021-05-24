@@ -18,14 +18,18 @@
     {% include 'core/html/bases/header.html' %}
     <main>
         <h1>Formulario de registro</h1>
+        <div id="alerta" style="display:none"><p id="message"></p></div> <!-- Muestra información-->
         <div id="formcontainer">
-            <form onsubmit=processform()>
+            <form action='/register/' method="POST" >
+                <!-- En el formulario se encuentran campos deshabilitados ya que son los que un usuario no puede cambiar, como su dni o su
+                nombre. Sin embargo, otros si que son modificables debido a que un usuario puede cambiar de email, telefono o dirección -->
+                {% csrf_token %} <!-- Token que impide ataques de suplantación-->
                 <fieldset id="code">
                     <legend>Código de centro</legend>
                     <p><small>En la siguiente casilla debe introducir el código que se le ha hecho llegar desde el centro</small></p>
                     <p>
-                        <label for="code">Código:</label><br>
-                        <input type="text" id="code" name="code" >
+                        <label for="usercode">Código:</label><br>
+                        <input type="text" id="usercode" name="usercode" onchange=getusercode(this) tabindex="1">
                     </p>
                 </fieldset>
                 <fieldset id="personal">
@@ -36,7 +40,7 @@
                     </p>
                     <p>
                         <label for="name">Nombre:</label><br>
-                        <input type="text" id="name" name="name" disabled>
+                        <input type="text" id="name" name="name" disabled >
                     </p>
                     <p>
                         <label for="lastname">Apellidos:</label><br>
@@ -48,31 +52,31 @@
                     </p>
                     <p>
                         <label for="address">Dirección:</label><br>
-                        <input type="text" id="address" name="address" disabled>
+                        <input type="text" id="address" name="address">
                     </p>
                 </fieldset>
-                <fieldset id="contact.html">
+                <fieldset id="contact">
                     <legend>Datos de contacto</legend>
                     <p>
                         <label for="email">Correo electrónico:</label><br>
-                        <input type="email" id="email" name="email" >
+                        <input type="email" id="email" name="email" tabindex="2" required>
                     </p>
                     <p>
                         <label for="phonenumber">Número de teléfono</label><br>
-                        <input type="tel" id="phonenumber" name="phonenumber" maxlength="9">
+                        <input type="tel" id="phonenumber" name="phonenumber" maxlength="9" tabindex="3" required>
                     </p>
                 </fieldset>
                 <fieldset id="image">
                     <legend>Imagen de usuario: </legend>
                     <p>¿Quiere añadir una imagen de perfil? Siéntase libre de hacerlo</p>
                     <label for="userimage">Imagen:</label>
-                    <input type="file" id="userimage" name="userimage"  accept="image/*">
+                    <input type="file" id="userimage" name="userimage"  accept="image/*" tabindex="4">
                 </fieldset>
                 <fieldset id="termsandconditions">
                     <legend>Consentimientos</legend>
-                    <input type="checkbox" id="privacitypolicy" name="privacitypolicy"><label from="privacitypolicy">He leído y acepto la política de privacidad de la empresa</label><br>
-                    <input type="checkbox" id="terms" name="terms"><label from="terms">He leído y acepto los términos y condiciones</label><br>
-                    <input type="checkbox" id="comunications" name="comunications"><label from="comunications">Deseo recibir información acerca de las novedades y eventos de Ibis</label>
+                    <input type="checkbox" id="privacitypolicy" name="privacitypolicy" tabindex="5" required><label from="privacitypolicy">He leído y acepto la política de privacidad de la empresa</label><br>
+                    <input type="checkbox" id="terms" name="terms" tabindex="6" required><label from="terms">He leído y acepto los términos y condiciones</label><br>
+                    <input type="checkbox" id="comunications" name="comunications" tabindex="7"><label from="comunications">Deseo recibir información acerca de las novedades y eventos de Ibis</label>
 
                 </fieldset>
                 

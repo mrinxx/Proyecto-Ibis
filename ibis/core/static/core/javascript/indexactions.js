@@ -59,7 +59,7 @@ $(document).ready(function(){
         }
     });
     $.ajax({
-        url: '/getfirstnews',
+        url: '/news/getfirstnews',
         method: 'GET',
         dataType: 'json',
         success: function (data){
