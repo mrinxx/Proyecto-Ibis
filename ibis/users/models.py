@@ -6,6 +6,9 @@ OPTIONS=[
      ("no", 'no'),
      ("si", 'si'),
 ]
+
+
+
 class Guardian(models.Model):
     guardiancode=models.CharField(primary_key=True,max_length=10)
     guardianusername=models.CharField(max_length=9,unique=True,blank=False,null=False)

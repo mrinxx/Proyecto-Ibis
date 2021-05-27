@@ -53,8 +53,8 @@ $(document).ready(function(){
             }else{
             for(menus of jsonMenus){
                 let optionagemenus=document.createElement("option");
-                optionagemenus.value=agesmap.get(timetable.fields.age);
-                optionagemenus.text=agesmap.get(timetable.fields.age)
+                optionagemenus.value=agesmap.get(menus.fields.age);
+                optionagemenus.text=agesmap.get(menus.fields.age)
                 selectdropdownmenus.append(optionagemenus);
             }
         }
@@ -65,33 +65,33 @@ $(document).ready(function(){
         }
     });
 
-    $.ajax({
-        url:'/getmenus',
-        method:'GET',
-        data:{},
-        dataType: 'json',
-        success: function (data){
-            let selectdropdownmenus=document.getElementById("school-menus__selector");
-            let jsonMenus=JSON.parse(data.menus);
-            allMenus=jsonMenus; //cargo en la lista todos los elementos que he recuperado
-            if(jsonMenus.length==0){
-                document.getElementById("school-menus__selector").style="display:none";
-                document.getElementById("school-menus__result").style="display:none";
-                createAlert("alertMenus");
-            }else{
-            for(menus of jsonMenus){
-                let optionagemenus=document.createElement("option");
-                optionagemenus.value=agesmap.get(timetable.fields.age);
-                optionagemenus.text=agesmap.get(timetable.fields.age)
-                selectdropdownmenus.append(optionagemenus);
-            }
-        }
-        },
-        failure: function(data){
-            console.log("failure");
-            console.log(data);
-        }
-    });
+    // $.ajax({
+    //     url:'/getmenus',
+    //     method:'GET',
+    //     data:{},
+    //     dataType: 'json',
+    //     success: function (data){
+    //         let selectdropdownmenus=document.getElementById("school-menus__selector");
+    //         let jsonMenus=JSON.parse(data.menus);
+    //         allMenus=jsonMenus; //cargo en la lista todos los elementos que he recuperado
+    //         if(jsonMenus.length==0){
+    //             document.getElementById("school-menus__selector").style="display:none";
+    //             document.getElementById("school-menus__result").style="display:none";
+    //             createAlert("alertMenus");
+    //         }else{
+    //         for(menus of jsonMenus){
+    //             let optionagemenus=document.createElement("option");
+    //             optionagemenus.value=agesmap.get(menus.fields.age);
+    //             optionagemenus.text=agesmap.get(menus.fields.age)
+    //             selectdropdownmenus.append(optionagemenus);
+    //         }
+    //     }
+    //     },
+    //     failure: function(data){
+    //         console.log("failure");
+    //         console.log(data);
+    //     }
+    // });
 })
 
 
@@ -102,10 +102,11 @@ $(document).on('change','#school-times__selector',function(){
 
 $(document).on('change','#school-menus__selector',function(){
     var value = $(this).find("option:selected").attr("value");
-    takeImage(allTimetables,"school-menus__result","menu",value)    
+    takeImage(allMenus,"school-menus__result","menu",value)    
 });
 
 function takeImage(elementsList,divTodisplay,type,value){
+    document.getElementById(divTodisplay).innerHTML="";
     let selection;
     
     for(let key of agesmap){
@@ -114,6 +115,7 @@ function takeImage(elementsList,divTodisplay,type,value){
         }
     }
     for(let element of elementsList){
+        console.log(element);
         if(element.fields.age==selection){
             let resultimage=document.createElement("img");
             let imageTodisplay;

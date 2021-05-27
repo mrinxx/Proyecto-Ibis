@@ -1,13 +1,15 @@
-from django.shortcuts import redirect, render, HttpResponse
+from django.shortcuts import redirect, render
 from django.http import JsonResponse #Se utiliza para mandar la respuesta en formato JSON
 from django.core.serializers import serialize #Se usa para poder pasar QuerySet a Json
 from .models import *
+import datetime #utilizado para la validación de la fecha de nacimiento
+
 # Create your views here.
 def login(request):
     if request.method=="POST":
         username=request.POST["username"]
         password=request.POST["password"]
-        guardian=Guardian.objects.filter(guardianusername=username).filter(password=password)
+        guardian=Guardian.objects.filter(guardianusername=username).filter(password=password).filter(activated="si")
         if guardian:
             return redirect(guardianPanel,username)
         else:
@@ -39,6 +41,12 @@ def register(request):
         return redirect(login)
     return render(request,"users/html/register.html")    
 
+# @login_required
 def guardianPanel(request,username):
     guardian=Guardian.objects.filter(guardianusername=username)
     return render(request,'users/html/userpanel.html',{'user':guardian})
+
+
+# def validateDate(date):
+#     today=datetime.datetime.now()
+#     if date.getyear()>=  today.date.

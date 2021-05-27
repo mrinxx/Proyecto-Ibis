@@ -1,6 +1,6 @@
 
 function search(){
-    alert("implement search bar !!!!!");
+    document.getElementById("searchbar").style.display="block";
 }
 
 

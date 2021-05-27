@@ -70,7 +70,7 @@ class Alumn(models.Model):
     birth_date=models.DateField()
     address=models.CharField(max_length=200)
     city=models.CharField(max_length=50)
-    image=models.ImageField(upload_to="guardians",blank=True)
+    image=models.ImageField(upload_to="alumns",blank=True)
     classroom=models.CharField(choices=AGE_CLASS,default="1E",max_length=2)
     legal_tutor=models.ForeignKey(Guardian, on_delete=models.CASCADE)
     alumn_created_at=models.DateField(auto_now_add=True)
