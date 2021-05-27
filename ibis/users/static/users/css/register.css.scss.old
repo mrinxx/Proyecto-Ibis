@@ -1,0 +1,196 @@
+@charset "UTF-8";
+/* Evito desbordamientos */
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  background-color: #F9F9F8;
+  font-family: "Montserrat", serif, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+}
+body main {
+  margin-bottom: 5%;
+}
+
+/*Estilos para los botones*/
+.clicker {
+  position: relative;
+  transition: all 0.2s ease;
+  border: none;
+  background-color: #F9F9F8;
+  margin-left: 30%;
+  margin-top: 2%;
+}
+.clicker span {
+  position: relative;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+/* Elemento de color */
+.clicker:before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 0;
+  display: block;
+  border-radius: 10px;
+  background: #FAA81D;
+  width: 56px;
+  height: 56px;
+  transition: all 0.3s ease;
+}
+
+.clicker:hover:before {
+  width: 100%;
+  background: #FAA81D;
+}
+
+/*CONTENIDO*/
+h1 {
+  font-family: "Abril Fatface", serif, Arial, Helvetica, sans-serif;
+  font-size: 9em;
+  margin-block-start: 0.5em;
+  text-align: center;
+}
+
+#formcontainer {
+  border: 3px solid #000000;
+  border-radius: 10px;
+  width: 90%;
+  margin: auto;
+}
+#formcontainer form {
+  margin: 5%;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas: "a a a a b b b b" "e e e e b b b b" "c c c c d d d d" "c c c c d d d d" "f f f f f f f f";
+}
+#formcontainer form #code {
+  grid-area: a;
+}
+#formcontainer form #account {
+  grid-area: e;
+}
+#formcontainer form #personal {
+  grid-area: b;
+}
+#formcontainer form #contact {
+  grid-area: c;
+}
+#formcontainer form #image {
+  grid-area: d;
+}
+#formcontainer form #termsandconditions {
+  grid-area: f;
+}
+#formcontainer form fieldset {
+  border: 0;
+}
+#formcontainer form fieldset legend {
+  border: 3px solid #000000;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-family: "Abril Fatface", serif, Arial, Helvetica, sans-serif;
+  font-size: 2em;
+  padding: 2%;
+  color: #ffffff;
+  width: 100%;
+  background-color: #FAA81D;
+}
+#formcontainer form #whattodo, #formcontainer form #aclaration {
+  font-weight: 700;
+}
+#formcontainer form input {
+  background-color: rgba(255, 0, 0, 0);
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 3px solid black;
+  width: 90%;
+  outline: none;
+}
+#formcontainer form input[type=file] {
+  border: initial;
+}
+#formcontainer form input[type=checkbox], #formcontainer form input[type=radio] {
+  width: initial;
+}
+#formcontainer form input:disabled {
+  background-color: #ebebeb;
+}
+#formcontainer form #see_pass {
+  /*Limpieza de estilos por defecto de un botón*/
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  margin-left: -7%;
+}
+
+.clicker {
+  margin-left: initial;
+}
+
+@media screen and (max-width: 1024px) {
+  h1 {
+    font-size: 5.5em;
+  }
+
+  #formcontainer {
+    border: 0px;
+    border-radius: 10px;
+    width: 90%;
+    margin: auto;
+  }
+
+  form {
+    display: initial;
+  }
+
+  .send {
+    background-color: #FAA81D;
+    border: 3px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    font-weight: 800;
+    margin: auto auto;
+    margin-top: 2%;
+    padding: 1%;
+  }
+
+  /* Elemento de color */
+  .send:before {
+    display: none;
+  }
+
+  .send span {
+    position: relative;
+    font-size: 16px;
+    font-weight: 900;
+  }
+
+  .send:hover:before {
+    width: 0%;
+    background: #F9F9F8;
+  }
+}
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 5em;
+  }
+}
+
+/*# sourceMappingURL=register.css.map */

@@ -1,5 +1,5 @@
 from django.db import models
-
+from users.models import Guardian
 # Create your models here.
 #Modelos que se vana  migrar a la base de datos y que sirven para formae los elementos de la web
 
@@ -60,23 +60,7 @@ OPTIONS=[
      ("no", 'no'),
      ("si", 'si'),
 ]
-class Guardian(models.Model):
-    guardiancode=models.CharField(primary_key=True,max_length=10)
-    dni=models.CharField(unique=True,max_length=9)
-    name=models.CharField(max_length=50)
-    last_name=models.CharField(max_length=150)
-    birth_date=models.DateField()
-    address=models.CharField(max_length=200)
-    city=models.CharField(max_length=50)
-    image=models.ImageField(upload_to="legal-guardian",blank=True)
-    email=models.EmailField()
-    phone=models.CharField(max_length=9)
-    privacity=models.CharField(choices=OPTIONS,default="no",max_length=2,blank=True)
-    terms=models.CharField(choices=OPTIONS,default="no",max_length=2,blank=True)
-    newsletter=models.CharField(choices=OPTIONS,default="no",max_length=2,blank=True)
-    activated=models.CharField(choices=OPTIONS,default="no",max_length=2)
-    guardian_created_at=models.DateField(auto_now_add=True)
-    guardian_updated_at=models.DateField(auto_now=True)
+
 
 class Alumn(models.Model):
     id=models.AutoField(primary_key=True)

@@ -18,7 +18,9 @@ body{
 }
 
 
-
+main{
+    margin-bottom: 5%;
+}
 /*CONTENIDO*/
 main p{
     text-align: center;
@@ -77,41 +79,11 @@ h2{
 
 @media screen and (max-width:1024px){
     
-    /*TODO: MODIFICAR*/
-    
-    #logo{
-        width: 40%;
-        margin: auto auto auto 30%;  
-    }
-        
-    #max-navegation-pages {
-        display: inline-block;
-        list-style-type: none;
-        width: 80%;
-    
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-    #max-navegation-pages li{
-        width: 20%;
-    }
-    
-    #max-navegation-accesibility {
-        display: inline-block;
-        margin-top: 2%;
-        list-style-type: none;
-        display: flex;
-        padding-inline-start: 0px;
-    }
-    #max-navegation-accesibility li i{
-        font-size:1.75em;
-        margin-right: 2%;
-    }
+   
 
     /*Contenido*/
     h1{
-        font-size:6em;
+        font-size:5.5em;
     }
     .teacher-image{
         width: 150px;
@@ -139,7 +111,7 @@ h2{
 
     /*Cuerpo de la página*/
     h1{
-        font-size: 6em;
+        font-size: 5em;
         margin-bottom:0;
         margin-top: 0;
     }

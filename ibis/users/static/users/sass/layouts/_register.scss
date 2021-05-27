@@ -1,0 +1,132 @@
+
+/*CONTENIDO*/
+
+h1{
+    font-family: $fuente-titulos;
+    font-size:9em;
+    margin-block-start: 0.5em;
+    text-align: center;
+}
+#formcontainer{
+    border:3px solid $negro;
+    border-radius: 10px;
+    width: 90%;
+    margin:auto;
+    form{
+        margin:5%;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-areas:
+        "a a a a b b b b"
+        "e e e e b b b b"
+        "c c c c d d d d"
+        "c c c c d d d d"
+        "f f f f f f f f";
+        #code{
+            grid-area: a;
+        }
+        #account{
+            grid-area: e;
+        }
+        #personal{
+            grid-area:b;
+        }
+        #contact{
+            grid-area: c;
+        }
+        #image{
+            grid-area: d;
+        }
+        #termsandconditions{
+            grid-area: f;
+        }
+        
+        fieldset{
+            border:0;
+            legend{
+                border:3px solid $negro;
+                border-top-left-radius:10px ;
+                border-top-right-radius: 10px;
+                font-family: $fuente-titulos;
+                font-size: 2em;
+                padding: 2%;
+                color: $blanco;
+                width: 100%;
+                background-color: $color-general;
+            }
+        }
+        #whattodo,#aclaration{
+            font-weight: 700;
+        }
+        input{
+            background-color: rgb(255,0,0,0);
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            border-bottom: 3px solid black;
+            width: 90%;
+            outline: none;
+        }
+        input[type="file"]{
+            border:initial;
+        }
+        input[type="checkbox"],input[type="radio"]{
+            width: initial;
+        }
+        input:disabled{
+            background-color: rgb(235, 235, 235);
+        }
+        #see_pass{
+            /*Limpieza de estilos por defecto de un botón*/
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+            margin-left:-7%;
+        }
+    }
+}
+.clicker{
+    margin-left:initial;
+}
+@media screen and (max-width:1024px){
+    h1{
+        font-size: 5.5em;
+    }
+    #formcontainer{
+        border:0px;
+        border-radius: 10px;
+        width: 90%;
+        margin:auto;
+    }
+    form{
+        display: initial;
+    }
+    .clicker{
+        @include buttonmobile();
+    }
+      /* Elemento de color */
+    .clicker:before {
+        @include buttonBeforeMobile();
+
+      }
+    
+    .clicker span {
+        @include buttonSpanMobile();
+      }
+      
+    .clicker:hover:before {
+        width: 0%;
+        background: #F9F9F8;
+      }
+}
+
+@media screen and (max-width:480px){
+    h1{
+        font-size: 5em;
+    }
+    
+}

@@ -1,0 +1,119 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+    <script src="{% static 'users/javascript/registrationactions.js'%}" crossorigin="anonymous"></script>
+    <script src="{% static 'users/javascript/passwordactions.js'%}" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'users/css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/footer.css' %}">
+
+    <title>Registro-Escuela infantil Ibis</title>
+</head>
+<body>
+    {% include 'users/html/bases/header.html' %}
+    <main>
+        <h1 id="pagetitle">Formulario de registro</h1>
+        <div id="alerta" style="display:none"><p id="message"></p></div> <!-- Muestra información-->
+        <div id="formcontainer">
+            <form method="POST" onsubmit="/users/register">
+            {% csrf_token %}
+                <!-- En el formulario se encuentran campos deshabilitados ya que son los que un usuario no puede cambiar, como su dni o su
+                nombre. Sin embargo, otros si que son modificables debido a que un usuario puede cambiar de email, telefono o dirección -->
+                <fieldset id="code">
+                
+                    <legend>Código de centro</legend>
+                    <p id="whattodo">En la siguiente casilla debe introducir el código de 10 dígitos que se le ha hecho llegar desde el centro</p>
+                    <p>
+                        <label for="usercode">Código:</label><br>
+                        <input type="text" id="usercode" name="usercode"  onkeyup=getusercode(this) minlength="10" maxlength="10" tabindex="1">
+                    </p>
+                    
+                </fieldset>
+                <fieldset id="account">
+                    <legend>Datos de la cuenta</legend>
+                    <p id="aclaration">Anote la casilla de nombre de usuario, ya que es con el cual podrá acceder a su zona de usuario</p>
+                    <p>
+                        <label for="username">Nombre de usuario:</label><br>
+                        <input type="text" id="username" name="username" disabled>
+                    </p>
+                    <p>
+                        <label for="password">Contraseña:<abbr title="Campo requerido">*</abbr></label><br>
+                        <input type="password" id="password" name="password" required minlength="8" maxlength="20"><button type="button" id="see_pass" onclick=revealpass(this.id) ><i class="far fa-eye"></i></button>
+                    </p>
+                    <p>
+                        <label for="passwordrepetition">Repita la contraseña:</label><br>
+                        <input type="password" id="passwordrepetition" name="passwordrepetition" required onchange=validatepasswords()>
+                    </p>
+                    
+                </fieldset>
+                <fieldset id="personal">
+                    <legend>Datos personales</legend>
+                
+                    <p>
+                        <label for="dni">DNI:</label><br>
+                        <input type="text" id="dni" name="dni" disabled>
+                    </p>
+                    <p>
+                        <label for="name">Nombre:</label><br>
+                        <input type="text" id="name" name="name" disabled >
+                    </p>
+                    <p>
+                        <label for="lastname">Apellidos:</label><br>
+                        <input type="text" id="lastname" name="lastname" disabled>
+                    </p>
+                    <p>
+                        <label for="birth-date">Fecha de nacimiento</label><br>
+                        <input type="date" id="birth-date" name="birth-date" disabled>
+                    </p>
+                    <p>
+                        <label for="address">Dirección:</label><br>
+                        <input type="text" id="address" name="address">
+                    </p>
+                    
+                </fieldset>
+                <fieldset id="contact">
+                    <legend>Datos de contacto</legend>
+                
+                    <p>
+                        <label for="email">Correo electrónico:</label><br>
+                        <input type="email" id="email" name="email" tabindex="2" required>
+                    </p>
+                    <p>
+                        <label for="phonenumber">Número de teléfono</label><br>
+                        <input type="tel" id="phonenumber" name="phonenumber" maxlength="9" tabindex="3" required>
+                    </p>
+                    
+                </fieldset>
+                <fieldset id="image">
+                    <legend>Imagen de usuario: </legend>
+                    <div>
+                    <p>¿Quiere añadir una imagen de perfil? Siéntase libre de hacerlo</p>
+                    <label for="userimage">Imagen:</label>
+                    <input type="file" id="userimage" name="userimage"  accept="image/*" tabindex="4">
+                    <div>
+                </fieldset>
+                <fieldset id="termsandconditions">
+                    <legend>Consentimientos</legend>
+                
+                    <input type="checkbox" id="privacitypolicy" name="privacitypolicy" tabindex="5" required><label for="privacitypolicy">He leído y acepto la política de privacidad de la empresa</label><br>
+                    <input type="checkbox" id="terms" name="terms" tabindex="6" required><label for="terms">He leído y acepto los términos y condiciones</label><br>
+                    <p>Deseo recibir información acerca de las novedades y eventos de Ibis</p>
+                    <input type="radio" id="si" name="comunications" tabindex="7" value="si" required><label for:"si">Sí</label>
+                    <input type="radio" id="no" name="comunications" tabindex="8" value="no"><label for:"no">No</label>
+                </fieldset>
+                
+                <p>
+                    <button type="submit" class="clicker"><span>Darse de alta</span></button>
+                </p>
+                
+            </form>
+        </div>
+    </main>
+    {% include 'users/html/bases/footer.html' %}
+</body>

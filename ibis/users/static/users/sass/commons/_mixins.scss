@@ -1,0 +1,30 @@
+@mixin cleanButtonStyle() {
+    /*Limpieza de estilos por defecto de un botón*/
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+@mixin buttonmobile(){
+    background-color: #FAA81D;
+    border: 3px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    font-weight: 800;
+    margin: auto auto;
+    margin-top: 2%;
+    padding: 1%;
+}
+@mixin buttonBeforeMobile() {
+    display:none;
+}
+
+@mixin  buttonSpanMobile() {
+    position: relative;
+    font-size: 16px;
+    font-weight: 900;  
+}

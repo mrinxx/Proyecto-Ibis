@@ -1,0 +1,52 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+    <script src="{% static 'users/javascript/loginactions.js'%}" crossorigin="anonymous"></script>
+    <script src="{% static 'users/javascript/passwordactions.js'%}" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/footer.css' %}">
+
+    <title>Login-Escuela infantil Ibis</title>
+</head>
+<body>
+    {% include 'users/html/bases/header.html' %}
+    <main>
+        <h1>Inicio de sesión</h1>
+        <div id="login-zone">
+            <div id="login-zone__form">
+                <form action="/users/login/" method="POST">
+                {% csrf_token %}
+                    <p>
+                        <label for="username">Nombre de usuario</label><br>
+                        <input type="text" id="username" name="username" required>
+                    </p>
+                    <p>
+                        <label for="password">Contraseña</label><br>
+                        <input type="password" id="password" name="password" required><button type="button" id="see_pass" onclick=revealpass(this.id)><i class="far fa-eye"></i></button>
+                    </p>
+                    <p>
+                        <button type="submit" class="clicker"><span>Acceder</span></button>
+                    </p>
+                </form>
+                <div id="alert">
+                    <p>Si todavía no te has dado de alta en la plataforma de la escuela, haz <a href="{% url 'register' %}">click aquí</a></p>
+                </div>
+                
+            </div>
+            <div id="login-zone__media">
+                <video id="video" src="{% static 'users/recursos/videos/video-login.mp4' %}" autoplay="autoplay" loop mute >
+            </div>
+
+        </div>
+       
+    </main>
+
+    {% include 'users/html/bases/footer.html' %}
+    </body>
