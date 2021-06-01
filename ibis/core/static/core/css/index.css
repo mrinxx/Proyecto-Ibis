@@ -21,11 +21,14 @@ main{
 }
 /*CUERPO DE LA PAGINA*/
 
+section{
+    padding-left:60px;
+    padding-right: 60px;
+}
 
 #events h2,#latest-news h2{
     font-family: 'Abril Fatface',serif,Arial, Helvetica, sans-serif;
     font-size: 3em;
-    margin-left:60px;
 }
 
 #events div{
@@ -145,7 +148,7 @@ a {
     border-top-right-radius: 10px;
     text-align: center;
     width: 100%;
-    height: 15%;
+    height: 50px;
     
 }
 .new-title h3{
@@ -161,7 +164,9 @@ a {
     width: 100%;
     height: 85%;
 }
-
+.wrapperimg{
+    height: 100%;
+}
 .new-img{
     width: 100%;
     height: 100%;
@@ -172,7 +177,7 @@ a {
 .new-description-text{
     position: absolute;
     text-align: left;
-    font-weight:600 ;
+    font-weight:800 ;
     letter-spacing: 2px;
     top: 40%;
     left: 50%;
@@ -186,10 +191,16 @@ a {
 /*MEDIA QUERIES*/
 
 @media screen and (max-width:1024px){
+    /* .wrapperimg{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        opacity: 0.9;
+    } */
     #news-container{
         display: grid;
         grid-template-columns: repeat(2,1fr);
-        grid-template-rows: auto;
+        row-gap: 40px;
     }
     #news-container>div{
         width: initial;
@@ -233,6 +244,10 @@ a {
 
 @media screen and (max-width:480px){
     /*CONTENIDO DE LA PÁGINA*/
+    .wrapperimg{
+        margin-left: 30%;
+        width: 70%;
+    }
     .alertMessage{
         height: 10vh;
     }
@@ -278,13 +293,21 @@ a {
         position: relative;
         top:50%;
         z-index: 1;
-        opacity:0.7;
+        /* opacity:0.7; */
         color:#FAA81D;
         margin-left:15%;
         letter-spacing: 5px;
     }
 
-    
+    .new-title h3{
+        margin-left: 2%;
+        font-size: 1em;
+        padding: 5% 20%;
+        color: black;
+        font-weight: bolder;
+    }
+
+
     
     .new-description{
         border: 3px solid black;
@@ -299,15 +322,12 @@ a {
     }
     
     .new-img{
-        width: 70%;
-        height: 100%;
-        border-bottom-left-radius: 10px;
-        border-top-right-radius: 10px;
-        border-bottom-left-radius: 10px;
-        margin-left: 30%;
+    height: 100%;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: initial;
     }
     
-    .new-description div{
+    .description{
         background-color: #FAA81D;
         position: absolute;
         font-weight: 600;
@@ -322,7 +342,4 @@ a {
         padding: 2%;
 
     }
-    
-
-    
 }

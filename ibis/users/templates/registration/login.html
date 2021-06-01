@@ -11,28 +11,41 @@
     <script src="{% static 'users/javascript/passwordactions.js'%}" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
-    <link rel="stylesheet" href="{% static 'users/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
 
     <title>Login-Escuela infantil Ibis</title>
 </head>
 <body>
-    {% include 'users/html/bases/header.html' %}
+    {% include 'core/html/bases/header.html' %}
     <main>
         <h1>Inicio de sesión</h1>
         <div id="login-zone">
             <div id="login-zone__form">
-                <form action="/users/login/" method="POST">
+            {% if form.errors %}
+                <p>Tus credenciales no son válidas, inténtelo de nuevo</p>
+            {% endif %}
+
+            {% if next %}
+                {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
+                {% else %}
+                <p>Please login to see this page.</p>
+                {% endif %}
+            {% endif %} 
+                <form action="{% url 'login' %}" method="post">
                 {% csrf_token %}
-                    <p>
-                        <label for="username">Nombre de usuario</label><br>
-                        <input type="text" id="username" name="username" required>
-                    </p>
-                    <p>
-                        <label for="password">Contraseña</label><br>
-                        <input type="password" id="password" name="password" required><button type="button" id="see_pass" onclick=revealpass(this.id)><i class="far fa-eye"></i></button>
-                    </p>
+                <p>
+                    {{form.username.label_tag}}
+                    {{form.username}}
+                </p>
+                <p>
+                    {{form.password.label_tag}}
+                    {{form.password}}<button type="button" id="see_pass" onclick=revealpass(this.id)><i class="far fa-eye"></i></button>
+                </p>
                     <p>
                         <button type="submit" value="login" class="clicker"><span>Acceder</span></button>
+                        <input type="hidden" name="next" value="{{ next }}">
                     </p>
                 </form>
                 <div id="alert">
@@ -48,5 +61,6 @@
        
     </main>
 
-    {% include 'users/html/bases/footer.html' %}
+    {% include 'core/html/bases/footer.html' %}
     </body>
+

@@ -1,0 +1,67 @@
+*{
+    box-sizing: border-box;
+}
+main{
+    margin-bottom: 5%;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+body{
+    background-color: #F9F9F8;
+    font-family: 'Montserrat',serif,Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+}
+
+h1{
+    font-family: 'Abril Fatface',serif,Arial, Helvetica, sans-serif;
+    font-size:9em;
+    margin-block-start: 0.5em;
+    text-align: center;
+}
+
+h2{
+    background-color: #FAA81D;
+    color: #F9F9F8;
+    font-family: 'Abril Fatface',serif,Arial, Helvetica, sans-serif;
+    font-size: 5em;
+    letter-spacing: 7px;
+    text-align: center;
+    padding: 2%;
+}
+
+h3{
+    font-size: 3em;
+    display: inline-block;
+    vertical-align: bottom;
+}
+.child-img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+#child-container, #personal-data, #account-data{
+    padding-left: 60px;
+    padding-right: 60px;
+}
+#address-data{
+    margin:auto auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(2,1fr);
+    column-gap: 10px;
+    row-gap: 15px;
+    justify-items: center;
+    align-items: center;
+
+    
+}
+.title{
+    font-size:1.5em;
+    font-weight: 800;
+}
+

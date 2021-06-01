@@ -1,4 +1,9 @@
-
+*{
+    box-sizing: border-box;
+}
+main{
+    margin-bottom: 5%;
+}
 /*CONTENIDO*/
 
 h1{
@@ -18,11 +23,11 @@ form{
     display: grid;
     grid-gap: 10px;
     grid-template-areas:
-    "a a a a b b b b"
-    "e e e e b b b b"
-    "c c c c d d d d"
-    "c c c c d d d d"
-    "f f f f f f f f";
+    "a b"
+    "e b"
+    "c d"
+    "c d"
+    "f f";
 }
 
 #code{
@@ -79,6 +84,14 @@ input[type="checkbox"],input[type="radio"]{
 }
 input:disabled{
     background-color: rgb(235, 235, 235);
+}
+
+#id_communications{
+    list-style-type: none;
+}
+
+#id_communications li{
+    display: inline-block;
 }
 #see_pass{
     /*Limpieza de estilos por defecto de un botón*/

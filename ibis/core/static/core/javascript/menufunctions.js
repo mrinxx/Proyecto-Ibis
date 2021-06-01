@@ -5,11 +5,9 @@ function search(){
 
 
 function darkMode(){
-    document.getElementById("dark-icon").style="display:none";
-    document.getElementById("light-icon").style="display:inline-block";
-    document.getElementById("min-dark-icon").style="display:none";
-    document.getElementById("min-light-icon").style="display:inline-block";
-
+    let headericon=document.getElementById("dark-icon");
+    headericon.className='far fa-sun';
+    headericon.onclick = function() {lightMode()};
     let headers1=document.getElementsByTagName("h1");
     for(headers of headers1){
         headers.style="color:#F9F9F8";
@@ -20,9 +18,20 @@ function darkMode(){
         headers.style="color:#F9F9F8";
     }
 
-    let listitems=document.getElementsByTagName("li");
-    for(item of listitems){
+    let listlinks=document.getElementsByTagName("a");
+    for(item of listlinks){
         item.style="color:#F9F9F8"
+    }
+
+
+    let listmybuttons=document.getElementsByClassName("see-more");
+    for(item of listmybuttons){
+        item.style="color:black"
+    }
+
+    document.getElementById('');
+    for(item of listmybuttons){
+        item.style="color:black"
     }
 
     document.getElementById("zona-logo").style="background-color:#333533";
@@ -34,10 +43,15 @@ function darkMode(){
     for(part of eventsdisplay){
         part.style="background-color:#202020;color:#F9F9F8";
     }
-
+}
+function test(){
+    alert("hola");
 }
 function lightMode(){
-    document.getElementById("light-icon").style="display:none";
+    let headericon=document.getElementById("dark-icon");
+    headericon.className='far fa-moon';
+    headericon.onclick='test()';
+
     document.getElementById("dark-icon").style="display:inline-block";
     document.getElementById("zona-logo").style="background-color:#FAA81D";
     document.getElementById("max-menu-navegacion").style="background-color:#FFC267";

@@ -17,13 +17,11 @@
                     <li><a href="{% url 'about' %}">Quiénes somos</a></li>
                     <li><a href="{% url 'services' %}">Servicios</a></li>
                     <li><a href="{% url 'contact' %}">Contacto</a></li>
-                    <li><a href="{% url 'users' %}">Zona de usuarios</a></li>
-                </ul>    
-                <ul id="max-navegation-accesibility">
+                    <li><a href="{% url 'userpanel' %}">Zona de usuarios</a></li>
+                    <li><a href="{% url 'home' %}">Zona de empleados</a></li> <!-- CAMBIAR-->
                     <li><i id="search-icon" class="fas fa-search" onclick="search()"></i></li>
                     <li><i id="dark-icon" class="far fa-moon" onclick="darkMode()"></i></li>
-                    <li><i id="light-icon" class="far fa-sun" onclick="lightMode()" style="display: none;"></i></li>
-                </ul>
+                </ul>    
     </nav>
    <nav id="min-menu-navegacion" >
         <div id="min-menu-navegacion_icon__container">
@@ -34,16 +32,18 @@
                 <li><a href="{% url 'about' %}">Quiénes somos</a></li>
                 <li><a href="{% url 'services' %}">Servicios</a></li>
                 <li><a href="{% url 'contact' %}">Contacto</a></li>
-                <li><a href="{% url 'users' %}">Zona de usuarios</a></li>
-            </ul>    
-            <ul id="navegation-accesibility_min">
+                <li><a href="{% url 'userpanel' %}">Zona de usuarios</a></li>
                 <li><i id="min-search-icon" class="fas fa-search" onclick="search()"></i></li>
                 <li><i id="min-dark-icon" class="far fa-moon" onclick="darkMode()"></i></li>
-                <li><i id="min-light-icon" class="far fa-sun" onclick="lightModeMobile()" style="display: none;"></i></li>
-            </ul>
+            </ul>    
         </div>
     </nav>   
 </header>
 <div id="searchbar" style="display:none">
-    <label for="search"><span><i class="fas fa-search"></i></span></label><input type="text" id="search"><button><span><i class="fas fa-times"></i></span></button>
+    <div id="searchbarcontainer">
+     <label for="search"><span><i class="fas fa-search"></i></span></label>
+     <input type="text" id="search">
+     <button><span><i class="fas fa-times"></i></span></button>
+    </div>
+   
 </div>

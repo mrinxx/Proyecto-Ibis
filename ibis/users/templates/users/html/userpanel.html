@@ -10,22 +10,64 @@
     <script src="{% static 'users/javascript/loginactions.js'%}" crossorigin="anonymous"></script>
     <script src="{% static 'users/javascript/passwordactions.js'%}" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
-    <link rel="stylesheet" href="{% static 'users/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/panel.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
 
     <title>Panel de usuario-Escuela infantil Ibis</title>
 </head>
 <body>
-    {% include 'users/html/bases/header.html' %}
+    {% include 'core/html/bases/header.html' %}    
     <main>
-        {%for usuario in user%}
-            <h1>{{usuario.name}} {{usuario.last_name}}</h1>
+            <h1>{{user.first_name}} {{user.last_name}}</h1>
+            <a href={% url 'logout' %}><span><i class="fas fa-door-open"></i></span>Cerrar sesión</a>
+            <p>En caso de necesitar ponerse en contacto con nosotros hagalo a través de <a href={% url 'contact' %}> este enlace <a></p>
             <h2>Menores a cargo</h2>
+            <div id="child-container">
+                {%for child in children%}
+                    <img class="child-img" src="/media/{{child.image}}">
+                    <h3>{{child.name}} {{child.last_name}}</h3>
+                    <p><span class="title">Fecha de nacimiento: </span><span>{{child.birth_date}}</span>
+                    <p><span class="title">Clase: </span><span>{{child.classroom}}</span></p>
+                    {% comment %} 
+                    Para buscar el tutor de ese alumno se realizaran 2 bucles:
+                        -El primero para encontrar de entre todos los que tutores que llegan desde la vista, el que tenga el id 
+                        del tutor del menor 
+                        -El segundo para de entre todos los usuarios tipo USER que llegan desde la vista, encontrar el que tiene como
+                        id el id del campo user_id del tutor para poder acceder a los datos de la cuenta{% endcomment %}
+                    {% for teacher in teachers %} 
+                        {%ifequal teacher.id child.teacher_id %}
+                            {%for user in userteacher%}
+                            {%ifequal user.id teacher.user_id%}
+                                <p><span  class="title">Tutor: </span><span>{{user.name}} {{user.last_name}}</span></p>
+                                <p><span  class="title">email: </span><span>{{user.email}}</span></p>  
+                            {%endifequal%}
+                            {% endfor %}
+                        {%endifequal%} 
+                    {% endfor %}
+                {% endfor %}
+                
+            </div>
             <h2>Datos personales</h2>
+             <div id="personal-data">
+                <p><span class="title">DNI: </span><span>{{guardian.dni}}</span></p>
+                <p><span class="title">Fecha de nacimiento: </span><span>{{guardian.birth_date}}</span></p>
+                <p class="title">Domicilio:</p>
+                    <div id="address-data">
+                        <p><span>{{guardian.via_type}}</span></p><p><span class="title">Nombre de Via: </span>{{guardian.via_name}}</p>
+                        <p><span class="title">Número: </span>{{guardian.via_number}}</p><p><span class="title">Planta: </span>{{guardian.address_floor}}</p>
+                        <p><span class="title">Letra:</span>{{guardian.floor_letter}}</p><p><span class="title">Ciudad: </span> {{guardian.city}}</p>
+                        <p><span class="title"> Código Postal</span>{{guardian.cp}}</p>
+                    </div>
+                <p><span class="title">Número de teléfono:</span><span>{{guardian.phone}}</span></p>
+                <p><span class="title">Correo electrónico:</span><span>{{user.email}}</span></p>
+             </div>
             <h2>Datos de la cuenta</h2>
-        {%endfor%}
-       
+            <div id="account-data">
+                <p><span class="title">Código: </span><span>{{guardian.guardiancode}}</span></p>
+                <p><span class="title">Nombre de usuario: </span><span>{{user.username}}<span></p>
+                <p><span class="title">Contraseña: </span></p><button>Cambiar contraseña</button>
+            </div>    
     </main>
 
-    {% include 'users/html/bases/footer.html' %}
+    {% include 'core/html/bases/footer.html' %}
     </body>

@@ -15,14 +15,7 @@ def getNews(request):
 
 def details(request,id):
     mynew=New.objects.filter(id=id)
-    allimages=[getattr(mynew,"media2"),getattr(mynew,"media3"),getattr(mynew,"media4"),getattr(mynew,"media5"),getattr(mynew,"media6")] 
-    images=[]
-    for i in allimages:
-        if(i==""):
-            continue
-        else:
-            images.append(i)
-    return render(request,"news/html/details.html",{'new':mynew,'images':images})
+    return render(request,"news/html/details.html",{'new':mynew})
 
 def firstNews(request):
     data = {

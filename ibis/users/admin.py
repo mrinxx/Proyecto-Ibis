@@ -1,7 +1,12 @@
 from django.contrib import admin
-from .models import Guardian
-from django.contrib.auth.models import User
-class readOnly(admin.ModelAdmin):
-    readonly_fields=('guardian_created_at','guardian_updated_at',"privacity","terms","newsletter","activated")
+from .models import *
+
+class readOnlyGuardian(admin.ModelAdmin):
+    readonly_fields=("privacity","terms","newsletter")
+
 # Register your models here.
-admin.site.register(Guardian,readOnly)
+admin.site.register(Guardian,readOnlyGuardian)
+admin.site.register(Teacher)
+admin.site.register(Alumn)
+
+

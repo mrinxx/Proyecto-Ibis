@@ -3,15 +3,15 @@ from django.urls import path
 from users import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 urlpatterns = [
     #Mis URL
-    #Aqui voy a poner una para que la principal sea el perfil del usuario
-    #en principio si el usuario no está logueado aparece el login y si no pues su página de inicio
     path('', views.login, name="userschange"),
-    path('login/', views.login, name="users"),
+    path('login/', auth_views.LoginView.as_view(), name='login'),#si no se está logueado que se loguee
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/',views.register,name="register"),
     path('guardiandetails/',views.guardianDetails,name="guardiandetails"),
-    path('userpanel/<str:username>',views.guardianPanel,name="userpanel")
+    path('userpanel/',views.guardianPanel,name="userpanel"),
 
 ]
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

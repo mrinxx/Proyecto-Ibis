@@ -85,17 +85,21 @@ $(document).ready(function(){
                     containerdescription.className="new-description";
 
                     let containerdescriptiontext=document.createElement("div");
+                    containerdescriptiontext.className="description";
                     let text=document.createElement("p");
                     text.textContent=element.fields.subtitle;
                     text.className="new-description-text";
                     containerdescriptiontext.appendChild(text);
 
+                    let wrapperimg=document.createElement("div");
+                    wrapperimg.className="wrapperimg";
                     let principalimg=document.createElement("img");
                     principalimg.className="new-img";
                     //Aunque no es necesario, sin media/ no muestra la imagen
                     principalimg.src="/media/"+element.fields.media1;
 
-                    containerdescription.appendChild(principalimg);
+                    wrapperimg.appendChild(principalimg);
+                    containerdescription.appendChild(wrapperimg);
                     containerdescription.appendChild(containerdescriptiontext);
 
                     
@@ -114,5 +118,5 @@ $(document).ready(function(){
 
 function createAlert(divToShow){
     let notElementsWarn=document.getElementById(divToShow);
-    notElementsWarn.style="display:block;border: 3px solid black;text-align: center;width: 85.5%;height:70px;margin: auto;border-radius: 10px;background-color: #FAA81D;font-weight: 800;margin-bottom:5%"
+    notElementsWarn.style="display:block;border: 3px solid black;text-align: center;width: 87.5%;margin: auto;border-radius: 10px;background-color: #FAA81D;font-weight: 800;margin-bottom:5%"
 }

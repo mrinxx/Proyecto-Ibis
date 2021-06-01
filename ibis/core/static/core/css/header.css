@@ -43,57 +43,60 @@ body{
     border-bottom:3px solid black;
     font-family: 'montserrat',serif,Arial, Helvetica, sans-serif;
     font-weight: 800; 
-
-    display: flex;
 }
 
 
 #max-navegation-pages {
     display: inline-block;
-    padding-inline-start: 33px;
     list-style-type: none;
-    width: 80%;
-
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
-#max-navegation-pages li{
-    width: 20%;
-}
-
-#max-navegation-accesibility {
-    
-    margin-top: 1.5%;
-    list-style-type: none;
-    padding-inline-start: 25px;
-    display: flex;
-    justify-content: space-between;
-    width: 20%;
 
 
-}
-#max-navegation-accesibility li i{
+
+#max-navegation-pages li i{
     font-size:1.75em;
     margin-right: 2%;
 }
+
 #searchbar{
     height: 100vh;
     background-color: #F9F9F8;
     opacity: 95%;
     position: absolute;
     width: 100%;
+    z-index: 3;
+}
+
+#searchbarcontainer{
+    display: block;
+    position: relative;
 }
 #search{
     height: 60px;
     border:0;
+    padding: 5px 20px 10px 54px;
+    width: 100%;
     border-bottom: 3px solid black;
-    width: 97%;
+    font-size: 250%;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    outline: none;
 }
 
 #searchbar i{
-    font-size: 2em;
-    position:absolute;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
 }
 
 button{
@@ -109,16 +112,15 @@ button{
 
 
 @media screen and (max-width:1024px){
-
-}
-
-@media screen and (max-width:480px){
-    /*PARTE SUPERIOR*/
     #zona-logo{
         background-color: #F9F9F8;
     }
     #max-menu-navegacion{
         display: none;
+    }
+
+    #logo{
+        width: 20%;
     }
     #min-menu-navegacion{
         display: inline-block;
@@ -159,14 +161,84 @@ button{
     }
 
     
-    #navegation-pages_min,#navegation-accesibility_min{
-        list-style-type: none;
-        text-align: center;
-        font-size:2em;
-    }
     #navegation-pages_min{
         font-weight: 800;
-        margin-top:20%;
-        padding-inline-start: 0;
+        margin-top: 20%;
+        font-size: 2em;
+        display: grid;
+        justify-content: center;
+        list-style-type: none;
+        padding: 0;
+        grid-row-gap: 28px;
+        text-align: center;
+    }
+}
+@media screen and (max-width:840px){
+    #max-navegation-pages li i{
+        font-size:1em;
+        margin-right: 0%;
+    }
+}
+@media screen and (max-width:480px){
+    /*PARTE SUPERIOR*/
+    #zona-logo{
+        background-color: #F9F9F8;
+    }
+    #max-menu-navegacion{
+        display: none;
+    }
+
+    #logo{
+        width: 20%;
+    }
+    #min-menu-navegacion{
+        display: inline-block;
+        text-align: end;
+        min-height: fit-content;
+    }
+    #min-menu-navegacion_icon__container{
+        background-color: #FAA81D;
+        border-radius: 50%;
+        width:50px;
+        height: 50px;
+        margin-left: 80vw;
+        text-align: center;
+        margin-top:0px;
+    }
+    #min-menu-navegacion_icon__link{
+        font-size: 1.5em;
+        margin-top: 25%;
+        appearance: unset;
+        background-color: rgb(255,0,0,0);
+        color:#F9F9F8;
+        border: 0px;
+    }
+
+   
+    #min_menu{
+        width: 90vw;
+        height: 70vh; 
+        border:2px solid black;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        background-color: #FAA81D;
+        margin-left: 10%;
+        margin-top:3.5%;
+        opacity: 95%;
+        position: absolute;
+        z-index: 2;
+    }
+
+    
+    #navegation-pages_min{
+        font-weight: 800;
+        margin-top: 20%;
+        font-size: 2em;
+        display: grid;
+        justify-content: center;
+        list-style-type: none;
+        padding: 0;
+        grid-row-gap: 28px;
+        text-align: center;
     }
 }

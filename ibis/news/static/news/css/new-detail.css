@@ -23,12 +23,12 @@ main{
 
 
 /*CONTENIDO*/
-
 h1{
     font-family: 'Abril Fatface',serif,Arial, Helvetica, sans-serif;
     font-size:9em;
     text-align: center;
-    
+    margin-top:-100px;
+    text-shadow: 5px -4px white;   
 }
 h2{
     background-color: #FAA81D;
@@ -41,14 +41,27 @@ h2{
 }
 #image-zone__image{
     width: 100vw;
-    height: 50vh;
-
+    margin-top:-100px;
 }
 
+#image-wrapper{
+      /* The image used */
+  background-image: url("img_parallax.jpg");
+
+  /* Set a specific height */
+  min-height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 #new-content p{
-    text-align: center;
-    padding: 0 2%;
+    text-align: left;
+    padding: 0 5%;
 }
+
 
 
 /*MEDIA QUERIES*/
@@ -59,4 +72,27 @@ h2{
 
 @media screen and (max-width:480px){
    
+h1{
+    font-size:5em;
+    margin-top: -65px;
+    margin-bottom: 30px;
+}
+#image-wrapper{
+    height: 50vh;
+    margin-top:50px
+}
+h3{
+    margin: 0px;
+    padding: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 0.9em;
+    position: relative;
+    top: -50%;
+    left: -15%;
+}
+#image-zone__image{
+    margin-top:-90px;
+    height: 50vh;
+}
 }

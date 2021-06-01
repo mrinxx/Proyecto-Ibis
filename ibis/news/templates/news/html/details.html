@@ -18,8 +18,10 @@
     <main>
         <div id="image-zone">
             <!-- TODO: Como hacer responsive? meter más de una imagen en la bd? -->
-            <img src="/media/{{new.media1}}" id="image-zone__image">
-            <h1 id="image-zone__title">{{new.title}}</h1>
+            <div id="image-wrapper" style="background-image: url('/media/{{new.media1}}')">
+            </div>
+                <h1 id="image-zone__title">{{new.title}}</h1>
+            
         </div>
         <section id="new-content">
             <p>{{new.content}}</p>
