@@ -44,9 +44,7 @@ function darkMode(){
         part.style="background-color:#202020;color:#F9F9F8";
     }
 }
-function test(){
-    alert("hola");
-}
+
 function lightMode(){
     let headericon=document.getElementById("dark-icon");
     headericon.className='far fa-moon';
@@ -63,20 +61,6 @@ function lightMode(){
     document.body.style="background-color:#F9F9F8";
     location.reload(); //lo hago ya que se producen errores al cambair el tamaño de pantalla
     
-}
-
-function lightModeMobile(){
-    document.getElementById("min-light-icon").style="display:none";
-    document.getElementById("min-dark-icon").style="display:inline-block";
-    document.getElementById("zona-logo").style="background-color:#F9F9F8";
-
-    document.querySelector('footer').style ="background-color:##FAA81D;color:black";
-    let eventsdisplay=document.getElementsByClassName('event');
-    for(part of eventsdisplay){
-        part.style="background-color:#F9F9F8;color:black";
-    }
-    document.body.style="background-color:#F9F9F8";
-    location.reload();
 }
 
 function displayMenu(){

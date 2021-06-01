@@ -186,6 +186,16 @@ a {
     padding: 4%;
 }
 
+.alert{
+    display:block;
+    border: 3px solid black;
+    text-align: center;
+    width: 87.5%;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #FAA81D;
+    font-weight: 800;margin-bottom:5%
+}
 
 
 /*MEDIA QUERIES*/

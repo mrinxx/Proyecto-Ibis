@@ -9,18 +9,10 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('about/', views.about, name="about"),
     path('services/', views.services, name="services"),
-    path('contact/', views.contact, name="contact"),
-
-    # path('news/', views.news, name="news"),
-    # path('details/<int:id>/',views.details,name="details"),
-
     path('getfirstevents',views.firstEvents,name="getfirstevents"),
-
     path('getevents',views.getEvents,name="getevents"),
     path('gettimetables',views.getTimetables,name="gettimetables"),
     path('getmenus',views.getMenus,name="getmenus"),
 
-    # path('guardianregister',views.handleGuardianRegister,name="guardianregister")
-    # path('getresources',views.getResources,name="getresources"),
 ]
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

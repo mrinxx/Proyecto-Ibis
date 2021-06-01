@@ -7,7 +7,7 @@
     <div id="zona-logo">
         <a href="{% url 'home' %}">
             <picture>
-                <source srcset="{% static 'core/recursos/imagenes/logo-small.svg' %}" media="(max-width: 480px)">
+                <source srcset="{% static 'core/recursos/imagenes/logo-small.svg' %}" media="(max-width: 1024px)">
                 <img id="logo" src="{% static 'core/recursos/imagenes/logo-full.svg' %}">
             </picture>
         </a>
@@ -33,6 +33,7 @@
                 <li><a href="{% url 'services' %}">Servicios</a></li>
                 <li><a href="{% url 'contact' %}">Contacto</a></li>
                 <li><a href="{% url 'userpanel' %}">Zona de usuarios</a></li>
+                <li><a href="{% url 'home' %}">Zona de empleados</a></li> <!-- CAMBIAR-->
                 <li><i id="min-search-icon" class="fas fa-search" onclick="search()"></i></li>
                 <li><i id="min-dark-icon" class="far fa-moon" onclick="darkMode()"></i></li>
             </ul>    

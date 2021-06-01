@@ -17,8 +17,3 @@ def details(request,id):
     mynew=New.objects.filter(id=id)
     return render(request,"news/html/details.html",{'new':mynew})
 
-def firstNews(request):
-    data = {
-        'news' : serialize('json',New.objects.all()[:6]) # [:6] indica que solo se cojan los 6 primeros, los cuales se muestran en el index
-    }
-    return JsonResponse(data)

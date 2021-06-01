@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'core',
     'news',
     'users',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "userpanel"
 LOGOUT_REDIRECT_URL="home"
+
+
+#Configuraciones para el email de prueba
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '3cc5ef7a366b9c'
+EMAIL_HOST_PASSWORD = 'feb74f7ae77721'
+EMAIL_PORT = '2525'

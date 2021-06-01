@@ -2,11 +2,12 @@ from django.shortcuts import render, HttpResponse
 from django.http import JsonResponse #Se utiliza para mandar la respuesta en formato JSON
 from django.core.serializers import serialize #Se usa para poder pasar QuerySet a Json
 from .models import Event,  Menu, Timetable
-
+from news.models import New
 
 # Create your views here.
 def home(request):
-    return render(request, "core/html/index.html")
+    news=New.objects.all()[:6]
+    return render(request, "core/html/index.html",{'news':news})
 
 def about(request):
     return render(request, "core/html/about.html")
@@ -14,8 +15,7 @@ def about(request):
 def services(request):
     return render(request, "core/html/services.html")
 
-def contact(request):
-    return render(request, "core/html/contact.html") 
+
 
 
 def firstEvents(request):

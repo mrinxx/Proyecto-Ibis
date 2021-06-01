@@ -31,7 +31,7 @@ class RegisterForm(forms.Form):
     city=forms.CharField(label="Ciudad",required=True)
     email=forms.CharField(label="Correo electónico:",widget=forms.EmailInput,required=True)
     userimage=forms.ImageField(label="Imagen: ")
-    phonenumber=forms.IntegerField(label="Numero de teléfono:",max_value=9,min_value=9,required=True)
+    phonenumber=forms.CharField(label="Numero de teléfono:",min_length=9,max_length=9,required=True,widget=forms.NumberInput)
     privacitypolicy= forms.BooleanField(required=True,label="He leído y acepto la política de privacidad de la empresa")
     terms=forms.BooleanField(required=True,label="He leído y acepto los términos y condiciones")
     communications = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect,required=True)

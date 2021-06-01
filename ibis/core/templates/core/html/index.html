@@ -24,12 +24,38 @@
             <div id="event-container"></div>
             <a id="see-more__events" class="see-more"><span>Cargar más eventos</span></a>
         </section>
-        
         <section id="latest-news">
             <h2>Últimas noticias</h2>
-            <div id="alertNews" class="alert" style="display:none"><p>¡Todavía no hay nada por aquí. Revíselo en otro momento!</p></div>
-            <div id="news-container"></div>
+            {%if news%}
+        <div id="news-container">
+            {% for new in news%}
+                
+                <div>
+                    <div class="new-title">
+                        <h3>{{new.title}}</h3>                    
+                    </div>
+                    <div class="new-description">
+                    
+                        <div class="description">
+                             <a href="{% url 'details' new.id%}" class="new-description-text">{{new.subtitle}}</a>
+                        </div>
+                    
+                   
+                        <div class="wrapperimg">
+                            <img class="new-img" src="/media/{{new.media1}}">
+                        </div>
+                    
+                    </div>
+                </div>
+                
+            {% endfor %}
+        </div>
         <a id="see-more__news" href="{% url 'news' %}" class="see-more"><span>Cargar más noticias</span></a>
+            {% else %}
+            <div id="alertNews" class="alert"><p>¡Todavía no hay nada por aquí. Revíselo en otro momento!</p></div>
+            {% endif %}
+
+           
         </section>
     </main>
     

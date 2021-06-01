@@ -5,7 +5,7 @@ class New(models.Model):
     id=models.AutoField(primary_key=True) #Id autoincremental
     title=models.CharField(max_length=50)
     subtitle=models.CharField(max_length=100)
-    content=models.CharField(max_length=2000)
+    content=models.TextField(max_length=3000)
     media1=models.ImageField(upload_to="news")
     #Estas imágenes no son obligatorias, solo lo es una para el encabezado de la noticia
     media2=models.ImageField(blank=True, null=True)

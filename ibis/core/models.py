@@ -1,9 +1,7 @@
 from django.db import models
 
 # Create your models here.
-#Modelos que se vana  migrar a la base de datos y que sirven para formae los elementos de la web
-
-
+#Modelos que se van a  migrar a la base de datos y que sirven para formae los elementos de la web
 
 class Event(models.Model):
     id=models.AutoField(primary_key=True)
@@ -11,7 +9,6 @@ class Event(models.Model):
     Description=models.CharField(max_length=400)
     created_at=models.DateField(auto_now_add=True)
     updated_at=models.DateField(auto_now=True)
-
 
 
 AGE_CLASS= [

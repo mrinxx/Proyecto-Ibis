@@ -1,3 +1,4 @@
+//En este documento se ve como facilita el uso de django la muestra de elementos por pantalla
 $(document).ready(function(){
     //En esta petición se piden los tres primeros eventos que haya en la base de datos, en caso de que haya se crea el elemento
     //donde se visualiza y en caso contrario se muestra una alerta
@@ -11,10 +12,14 @@ $(document).ready(function(){
             const months=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 
             let jsonEvents=JSON.parse(data.events);
+            //en caso de que no haya eventos se va mostrar un mensaje
             if(jsonEvents.length==0){
                 document.getElementById("see-more__events").style="display:none";
                 createAlert("alertEvent");
             }else{
+                //En caso de que haya eventos:
+                //Para cada elemento se va a crear el contenedor donde se muestran todos los datos y se va a hacer que 
+                //se muestre en pantalla
                 for(element of jsonEvents){
                     let container=document.createElement("div");
                     container.className="event-container";
@@ -32,7 +37,7 @@ $(document).ready(function(){
 
                     let spanmonth=document.createElement("span");
                     spanmonth.className="date-month";
-                    spanmonth.textContent=months[date.getMonth()];
+                    spanmonth.textContent=months[date.getMonth()]; //se coge el mes que corresponde en la lista de meses declarada
 
                     containerdate.appendChild(spanday);
                     containerdate.appendChild(linebreak);
@@ -58,65 +63,10 @@ $(document).ready(function(){
             console.log(data);
         }
     });
-    $.ajax({
-        url: '/news/getfirstnews',
-        method: 'GET',
-        dataType: 'json',
-        success: function (data){
-            let jsonNews=JSON.parse(data.news).reverse();
-
-            if(jsonNews.length==0){
-                document.getElementById("see-more__news").style="display:none";
-                createAlert("alertNews");
-            }else{
-                for(element of jsonNews){
-                    let containernew=document.createElement("div");
-                    
-                    let containertitle=document.createElement("div");
-                    containertitle.className="new-title";
-
-                    let newtitle=document.createElement("h3");
-                    newtitle.textContent=element.fields.title;
-                    
-                    containertitle.appendChild(newtitle);
-                    containernew.appendChild(containertitle);
-                    
-                    let containerdescription=document.createElement("div");
-                    containerdescription.className="new-description";
-
-                    let containerdescriptiontext=document.createElement("div");
-                    containerdescriptiontext.className="description";
-                    let text=document.createElement("p");
-                    text.textContent=element.fields.subtitle;
-                    text.className="new-description-text";
-                    containerdescriptiontext.appendChild(text);
-
-                    let wrapperimg=document.createElement("div");
-                    wrapperimg.className="wrapperimg";
-                    let principalimg=document.createElement("img");
-                    principalimg.className="new-img";
-                    //Aunque no es necesario, sin media/ no muestra la imagen
-                    principalimg.src="/media/"+element.fields.media1;
-
-                    wrapperimg.appendChild(principalimg);
-                    containerdescription.appendChild(wrapperimg);
-                    containerdescription.appendChild(containerdescriptiontext);
-
-                    
-                    containernew.appendChild(containerdescription);
-                    document.getElementById("news-container").appendChild(containernew);
-                }
-             }
-
-        },
-        failure: function(data){
-            console.log("failure");
-            console.log(data);
-        },
-    });
 });
 
+//muestra la alerta cuando no hay ningún elemento, eventos en este caso
 function createAlert(divToShow){
     let notElementsWarn=document.getElementById(divToShow);
-    notElementsWarn.style="display:block;border: 3px solid black;text-align: center;width: 87.5%;margin: auto;border-radius: 10px;background-color: #FAA81D;font-weight: 800;margin-bottom:5%"
+    notElementsWarn.style.display="block";
 }
