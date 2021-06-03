@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.constraints import UniqueConstraint
 
 # Create your models here.
 #Modelos que se van a  migrar a la base de datos y que sirven para formae los elementos de la web

@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 urlpatterns = [
     #Mis URL
-    path('', views.login, name="userschange"),
+    # path('', views.login, name="userschange"),
     path('login/', auth_views.LoginView.as_view(), name='login'),#si no se está logueado que se loguee
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/',views.register,name="register"),

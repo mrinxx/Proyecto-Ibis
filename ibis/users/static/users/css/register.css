@@ -86,11 +86,11 @@ input:disabled{
     background-color: rgb(235, 235, 235);
 }
 
-#id_communications{
+#id_comunications{
     list-style-type: none;
 }
 
-#id_communications li{
+#id_comunications li{
     display: inline-block;
 }
 #see_pass{

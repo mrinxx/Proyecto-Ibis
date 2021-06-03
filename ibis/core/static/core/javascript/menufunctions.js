@@ -2,7 +2,11 @@
 function search(){
     document.getElementById("searchbar").style.display="block";
 }
-
+$(function(){ 
+$("#close").click(function(){
+    document.getElementById("searchbar").style.display="none";
+})
+})
 
 function darkMode(){
     let headericon=document.getElementById("dark-icon");

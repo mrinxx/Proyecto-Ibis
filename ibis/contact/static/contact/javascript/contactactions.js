@@ -1,14 +1,7 @@
 
-function submitted(){
-    alert("gracias por contactar, le responderemos en breve")
-}
-
-
-// $("form :input").on("focus",function(){
-//     console.log($(this).attr("id"));
-// })
-
-
-    
-
+$(function(){
+    $(".close").click(function(){
+       $(".message:visible").hide();
+    })
+})
 

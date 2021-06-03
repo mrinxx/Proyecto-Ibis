@@ -44,15 +44,17 @@ h2{
 }
 
 .team-name{
+    font-size:1.5em;
     font-weight: 600;
     margin-bottom: 0px;
     margin-top:0;
 }
 
 .team-title{
-    font-size:0.7em;
+    font-size:0.9em;
     font-style: italic;
     margin-top: 0px;
+
 }
 
 #about-team__people{
@@ -69,6 +71,7 @@ h2{
     width: 200px;
     height: 200px;
     border-radius: 100%;
+    border:3px solid black;
 }
 
 
@@ -86,12 +89,30 @@ h2{
         font-size:5.5em;
     }
     .teacher-image{
-        width: 150px;
-        height: 150px;
+        width: 180px;
+        height: 180px;
     }
     main p{
         text-align: left;
         padding: 1% 7%;
+    }
+    #about-team__people{
+        grid-column-gap:20px;
+    }
+    .team-name{
+        font-size:1em;
+        font-weight: 600;
+        margin-bottom: 0px;
+        margin-top:0;
+        text-align: center;
+    }
+    
+    .team-title{
+        font-size:0.8em;
+        font-style: italic;
+        margin-top: 0px;
+        text-align: center;
+    
     }
     #footer-max_elements-list{
         margin-left:0;
@@ -124,11 +145,25 @@ h2{
         margin-bottom: 0.5em;
         padding: 4%;
     }
-    
-    .team-title{
-        font-size:0.9em;
+    #about-team__people{
+        margin-left: 5%;
+        margin-right:5% ;
+        
     }
-
+    .team-name{
+        font-size: 0.84em;
+        font-weight: 600;
+        margin-bottom: 0px;
+        margin-top: 0;
+        text-align: center;
+    }
+    .about-team__people--containerpicture{
+        width: 30vw;
+    }
+    .team-title{
+        font-size: 0.7em;
+        text-align: center;
+    }
     .teacher-image{
         width: 100px;
         height: 100px;

@@ -20,6 +20,9 @@
 
         <div id="alerta" style="display:none"><p id="message"></p></div> <!-- Muestra información-->
         <div id="formcontainer">
+        {%if 'failure' in request.GET%}
+            <div class="alert"><p>Han ocurrido problemas durante el proceso, inténtelo de nuevo</p></div>
+        {%endif%}
             <form method="POST" onsubmit="/users/register">
             {% csrf_token %}
                 <!-- En el formulario se encuentran campos deshabilitados ya que son los que un usuario no puede cambiar, como su dni o su
@@ -31,6 +34,7 @@
                     <p>
                         {{form.code.label_tag}}
                         {{form.code}}
+                        
                     </p>
                     
                 </fieldset>
@@ -44,11 +48,13 @@
                     <p>
                         {{form.password1.label_tag}}
                         {{form.password1}}<button type="button" id="see_pass" onclick=revealpass(this.id) ><i class="far fa-eye"></i></button>
+                        {{form.password1.errors}}
                     </p>
                     <p>
                         {{form.password2.label_tag}}
                         {{form.password2}}
                     </p>
+                    
                     
                 </fieldset>
                 <fieldset id="personal">
@@ -107,10 +113,12 @@
                     <p>
                         {{form.email.label_tag}}
                         {{form.email}}
+                        {{form.email.errors}}
                     </p>
                     <p>
                         {{form.phonenumber.label_tag}}
                         {{form.phonenumber}}
+                        {{form.phonenumber.errors}}
                     </p>
                     
                 </fieldset>
@@ -127,7 +135,7 @@
                     {{form.privacitypolicy}} {{form.privacitypolicy.label_tag}}<br>
                     {{form.terms}} {{form.terms.label_tag}}
                     <p>Deseo recibir información acerca de las novedades y eventos de Ibis</p>
-                    {{form.communications}}
+                    {{form.comunications}}
                 </fieldset>
                 
                 <p>

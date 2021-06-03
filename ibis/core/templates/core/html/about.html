@@ -34,89 +34,29 @@
         <section id="about-team">
             <h2>Equipo docente</h2>
             <div id="about-team__people">
+            {% for teacher in teachers %}
                 <div class="about-team__people--container">
                     <div class="about-team__people--containerpicture">
                         <picture>
-                            <img class="teacher-image"src="{% static 'core/recursos/imagenes/pexels-andrea-piacquadio-774909.jpg' %}">
-                        </picture>
-                    </div>
-                    <p class="team-name">Lorem ipsum</p>
-                    <p class="team-title">Lorem ipsum</p>
-                </div>
-                <div class="about-team__people--container">
-                    <div class="about-team__people--containerpicture">
-                        <picture>
-                            <img class="teacher-image"src="{% static 'core/recursos/imagenes/pexels-andrea-piacquadio-774909.jpg' %}">
-                        </picture>
-                    </div>
-                    <p class="team-name">Lorem ipsum</p>
-                    <p class="team-title">Lorem ipsum</p>
-                </div>
-                <div class="about-team__people--container">
-                    <div class="about-team__people--containerpicture">
-                        <picture>
-                            <img class="teacher-image"src="{% static 'core/recursos/imagenes/pexels-andrea-piacquadio-774909.jpg' %}">
-                        </picture>
-                    </div>
-                    <p class="team-name">Lorem ipsum</p>
-                    <p class="team-title">Lorem ipsum</p>
-                </div>
-                <div class="about-team__people--container">
-                    <div class="about-team__people--containerpicture">
-                        <picture>
-                            <img class="teacher-image"src="{% static 'core/recursos/imagenes/pexels-andrea-piacquadio-774909.jpg' %}">
-                        </picture>
-                    </div>
-                    <p class="team-name">Lorem ipsum</p>
-                    <p class="team-title">Lorem ipsum</p>
-                </div>
-                <div class="about-team__people--container">
-                    <div class="about-team__people--containerpicture">
-                        <picture>
-                            <img class="teacher-image"src="{% static 'core/recursos/imagenes/pexels-andrea-piacquadio-774909.jpg' %}">
-                        </picture>
-                    </div>
-                    <p class="team-name">Lorem ipsum</p>
-                    <p class="team-title">Lorem ipsum</p>
-                </div>
-                <div class="about-team__people--container">
-                    <div class="about-team__people--containerpicture">
-                        <picture>
-                            <img class="teacher-image"src="{% static 'core/recursos/imagenes/pexels-andrea-piacquadio-774909.jpg' %}">
-                        </picture>
-                    </div>
-                    <p class="team-name">Lorem ipsum</p>
-                    <p class="team-title">Lorem ipsum</p>
-                </div>
-                <div class="about-team__people--container">
-                    <div class="about-team__people--containerpicture">
-                        <picture>
-                            <img class="teacher-image"src="{% static 'core/recursos/imagenes/pexels-andrea-piacquadio-774909.jpg' %}">
-                        </picture>
-                    </div>
-                    <p class="team-name">Lorem ipsum</p>
-                    <p class="team-title">Lorem ipsum</p>
-                </div>
-                <div class="about-team__people--container">
-                    <div class="about-team__people--containerpicture">
-                        <picture>
-                            <img class="teacher-image" src="{% static 'core/recursos/imagenes/pexels-andrea-piacquadio-774909.jpg' %}">
-                        </picture>
-                    </div>
-                    <p class="team-name">Lorem ipsum</p>
-                    <p class="team-title">Lorem ipsum</p>
-                </div>
-                <div class="about-team__people--container">
-                    <div class="about-team__people--containerpicture">
-                        <picture>
-                            <img class="teacher-image"src="{% static 'core/recursos/imagenes/pexels-andrea-piacquadio-774909.jpg' %}">
-                        </picture>
-                    </div>
-                    <p class="team-name">Lorem ipsum</p>
-                    <p class="team-title">Lorem ipsum</p>
-                </div>
+                            {% for user in users %}
+                            
+                            {% ifequal user.id  teacher.user_id%}
+                            <img class="teacher-image"src="/media/{{teacher.image}}" alt="imagen de {{user.first_name}}{{user.last_name}}">
 
-               
+                        </picture>
+                    </div>
+                    <p class="team-name">{{user.first_name}} {{user.last_name}}</p>
+                    {% for cicle in cicles %}
+                    {% ifequal cicle.teacher_id teacher.id%}
+                        <p class="team-title">Profesorado de ciclo {{cicle.classroom}}</p>
+                    {% endifequal %}
+                    {% endfor %}
+                    {% endifequal %}
+                    {% endfor %}
+
+                </div>
+            {% endfor %}
+                
             </div>    
         </section>
         

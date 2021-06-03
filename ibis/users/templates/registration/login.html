@@ -21,16 +21,18 @@
         <h1>Inicio de sesión</h1>
         <div id="login-zone">
             <div id="login-zone__form">
+            {%if 'ok' in request.GET%}
+                <div class="alert"><p>Se ha registrado correctamente, ya puede iniciar sesión</p></div>
+            {%endif%}
             {% if form.errors %}
-                <p>Tus credenciales no son válidas, inténtelo de nuevo</p>
+             <div class="alert"><p>!Sus credenciales no son válidas, inténtelo de nuevo!</p></div>
             {% endif %}
 
             {% if next %}
                 {% if user.is_authenticated %}
-                <p>Your account doesn't have access to this page. To proceed,
-                please login with an account that has access.</p>
+                <div class="alert"><p>!Sus credenciales no son válidas para acceder a esta página!</p></div>
                 {% else %}
-                <p>Please login to see this page.</p>
+                <div class="alert"><p>Para acceder a esta página es necesario iniciar sesión</p></div>
                 {% endif %}
             {% endif %} 
                 <form action="{% url 'login' %}" method="post">
@@ -48,7 +50,7 @@
                         <input type="hidden" name="next" value="{{ next }}">
                     </p>
                 </form>
-                <div id="alert">
+                <div class="alert">
                     <p>Si todavía no te has dado de alta en la plataforma de la escuela, haz <a href="{% url 'register' %}">click aquí</a></p>
                 </div>
                 

@@ -8,5 +8,6 @@ class readOnlyGuardian(admin.ModelAdmin):
 admin.site.register(Guardian,readOnlyGuardian)
 admin.site.register(Teacher)
 admin.site.register(Alumn)
+admin.site.register(Cicle)
 
 

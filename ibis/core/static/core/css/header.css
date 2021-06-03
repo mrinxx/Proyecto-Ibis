@@ -77,26 +77,38 @@ body{
 }
 #search{
     height: 60px;
-    border:0;
-    padding: 5px 20px 10px 54px;
+    border: none;
+    padding: 5px 20px 10px 150px;
     width: 100%;
     border-bottom: 3px solid black;
+    border-radius: 0;
+    color: black;
+    font-family: 'montserrat',serif,Arial, Helvetica, sans-serif;;
     font-size: 250%;
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    outline: none;
+    font-weight: 600;
+
 }
 
-#searchbar i{
+
+#icon{
     position: absolute;
-    top: 0;
+    top: 10px;
     right: 0;
     bottom: 0;
-    left: 0;
+    left: 78px;
     width: 100%;
     height: 100%;
+    font-size: 2em;
     
+}
+
+#close{
+    position: absolute;
+    top: 54px;
+    right: 61px;
+    bottom: 0;
+    height: 100%;
+    font-size: 2em;
 }
 
 button{

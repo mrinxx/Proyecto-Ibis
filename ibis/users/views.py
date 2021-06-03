@@ -7,9 +7,11 @@ from django.contrib.auth.models import User, Group
 from .forms import LoginForm, RegisterForm
 from django.contrib.auth import  login
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.contrib.auth import decorators
 from users.decorators import testGuardian
+
 # Create your views here.
 
 #Vista que muestra el formulario de inicio de sesión
@@ -44,49 +46,66 @@ def register(request):
     #   -Se toma el usuario correspondiente al código de la BD y se modifica
     registerform=RegisterForm()
     if request.method=="POST":
-        code=request.POST["code"]
-        password=request.POST["password1"]
-        image=request.POST["userimage"]
-        phone=request.POST["phonenumber"]
-        email=request.POST["email"]
-        comunications=request.POST["comunications"]
-        viatype=request.POST["viatype"]
-        vianame=request.POST["vianame"]
-        vianumber=request.POST["vianumber"]   
-        floor=request.POST["floor"]
-        letter=request.POST["letter"]
-        cp=request.POST["cp"]
-        city=request.POST["city"]
-        guardian=Guardian.objects.filter(guardiancode=code); 
-        guardian.update(image=image,phone=phone,activated="si",privacity="si",terms="si",newsletter=comunications,via_type=viatype,via_name=vianame,via_number=vianumber,address_floor=floor,floor_letter=letter,cp=cp,city=city)
-        user=User.objects.filter(id=guardian[0].user_id)[:1]
-        user[0].set_password=password
-        user[0].is_staff=0
-        user[0].is_superuser=0
-        user[0].email=email
-        user[0].save()
-        group = Group.objects.filter(name = "Guardians")                
-        user.groups.add(group) 
-        return redirect(login)
+        registerform=RegisterForm(data=request.POST)
+        if registerform.is_valid():
+            name=request.POST.get("name",'')
+            lastname=request.POST.get("lastname",'')
+            code=request.POST.get("code",'')
+            dni=request.POST.get("dni")
+            password=request.POST.get("password1",'')
+            image=request.POST.get("userimage",'')
+            phone=request.POST.get("phonenumber",'')
+            email=request.POST.get("email",'')
+            comunications=request.POST.get("comunications",'')
+            viatype=request.POST.get("viatype",'')
+            vianame=request.POST.get("vianame",'')
+            vianumber=request.POST.get("vianumber",'') 
+            floor=request.POST.get("floor",'')
+            letter=request.POST.get("letter",'')
+            cp=request.POST.get("cp",'')
+            city=request.POST.get("city",'')
+            try:
+                guardian=Guardian.objects.filter(guardiancode=code); 
+                guardian.update(image=image,dni=dni,phone=phone,privacity="si",terms="si",newsletter=comunications,via_type=viatype,via_name=vianame,via_number=vianumber,address_floor=floor,floor_letter=letter,cp=cp,city=city)
+                
+                user=User.objects.filter(id=guardian[0].user_id)[:1]
+                #user[0].update(name=name,lastname=lastname,password=password,is_staff=False,is_active=True,email=email)
+                user[0].name=name
+                user[0].lastname=lastname
+                user[0].set_password=password
+                user[0].is_staff=False
+                user[0].is_active=True #se activa el usuario para que pueda iniciar sesión
+                user[0].is_superuser=False
+                user[0].email=email
+                # group = Group.objects.filter(name = "Guardians")                
+                # user.groups.add(group) 
+                return(redirect(reverse('login')+"?ok"))
+            except:
+                registerform=RegisterForm()
+                return(redirect(reverse('register')+"?failure"))
     return render(request,"users/html/register.html",{'form':registerform})    
 
 
-# @method_decorator(testGuardian, name='dispatch')
-@login_required(login_url='/users/login/')
+# # @method_decorator(testGuardian, name='dispatch')
+@login_required(login_url="login") #en caso de no estar logueado, se redirige aqui
 def guardianPanel(request):
     user=User.objects.filter(username=request.user)  #usuario logueado
     guardian=Guardian.objects.filter(user_id=user[0].id) #tutor legal que corresponde al usuario logueado
     children=Alumn.objects.filter(legal_tutor_id=guardian[0].guardiancode) #alumnos a cargo del tutor legal
-    teachers=[] #se van a almacenar todos los profesores que los alumnos tengan
+
+
+    teachers=[] #se van a almacenar todos los profesores que los alumnos tengan (funcional cuando un tutor legal tirnr mas de un menor a su cargo)
+    classrooms=[] #se van a almacenar las clases a las que pertenecen los menores a cargo del tutor legal
     userteachers=[]
     for child in children:
-        teacher=Teacher.objects.filter(id=child.teacher_id) #se busca el tutor
-        teachers.append(teacher[0])
+        classroom=Cicle.objects.filter(id=child.classroom_id) #se busca la clase en la que está el menor
+        teacher=Teacher.objects.filter(id=classroom[0].teacher_id)
         teacheruser=User.objects.filter(id=teacher[0].user_id) #se busca el usuario correspondiente al tutor
+        classrooms.append(classroom[0]) 
         userteachers.append(teacheruser[0])
         
     # teacher=Teacher.objects.filter(id=children.teacher_id)
-    return render(request,'users/html/userpanel.html',{'user':user[0],'guardian':guardian[0],'children':children,'teachers':teachers,'userteacher':userteachers})
+    return render(request,'users/html/userpanel.html',{'user':user[0],'guardian':guardian[0],'children':children,'teachers':teachers,'userteacher':userteachers,'classrooms':classrooms})
 
 # def validateDate(date):
 #     today=datetime.datetime.now()
