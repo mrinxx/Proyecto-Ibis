@@ -24,18 +24,20 @@ form{
     grid-gap: 10px;
     grid-template-areas:
     "a b"
-    "e b"
     "c d"
     "c d"
-    "f f";
+    "f f"
+    "e e";
 }
 
-#code{
+#codeandaccount{
     grid-area: a;
 }
+
 #account{
-    grid-area: e;
+    margin-top: 94.7px;
 }
+
 #personal{
     grid-area:b;
 }
@@ -52,7 +54,20 @@ form{
 fieldset{
     border:0;
 }
+.smaller{
+    width: 45%;
+    margin-right: 0;
+    display: inline-block;
+}
 
+
+select{
+    width: 90%;
+    border:3px solid black;
+    border-radius: 10px;
+    font-family: 'montserrat',serif,Arial, Helvetica, sans-serif;
+    height: 30px;
+}
 legend{
     border:3px solid black;
     border-top-left-radius:10px ;
@@ -112,6 +127,7 @@ input:disabled{
     background-color: #F9F9F8;
     margin-left:auto;
     margin-top:2%;
+    grid-area:e;
   }
   /* Elemento de color */
 .clicker:before {
@@ -151,6 +167,11 @@ input:disabled{
     form{
         display: initial;
     }
+
+
+    #account{
+        margin-top:initial;
+    }
     .clicker{
         background-color: #FAA81D;
         border: 3px solid black;
@@ -166,7 +187,6 @@ input:disabled{
         display: none;
 
       }
-    
     .clicker span {
         position: relative;
         font-size: 16px;

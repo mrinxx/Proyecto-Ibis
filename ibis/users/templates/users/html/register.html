@@ -20,13 +20,14 @@
 
         <div id="alerta" style="display:none"><p id="message"></p></div> <!-- Muestra información-->
         <div id="formcontainer">
-        {%if 'failure' in request.GET%}
+        {%if not ok %}
             <div class="alert"><p>Han ocurrido problemas durante el proceso, inténtelo de nuevo</p></div>
         {%endif%}
             <form method="POST" onsubmit="/users/register">
             {% csrf_token %}
                 <!-- En el formulario se encuentran campos deshabilitados ya que son los que un usuario no puede cambiar, como su dni o su
                 nombre. Sin embargo, otros si que son modificables debido a que un usuario puede cambiar de email, telefono o dirección -->
+               <div id="codeandaccount">
                 <fieldset id="code">
                 
                     <legend>Código de centro</legend>
@@ -54,9 +55,8 @@
                         {{form.password2.label_tag}}
                         {{form.password2}}
                     </p>
-                    
-                    
                 </fieldset>
+                </div>
                 <fieldset id="personal">
                     <legend>Datos personales</legend>
                 
@@ -76,28 +76,28 @@
                         {{form.birthdate.label_tag}}
                         {{form.birthdate}}
                     </p>
-                    <p>
-                        {{form.viatype.label_tag}}
+                    <p class="smaller">
+                        {{form.viatype.label_tag}}<br>
                         {{form.viatype}}
                         <!-- <span><i class="fas fa-caret-down"></i></span> -->
                     </p>
-                    <p>
+                    <p class="smaller">
                         {{form.vianame.label_tag}}
                         {{form.vianame}}
                     </p>
-                    <p>
+                    <p class="smaller">
                         {{form.vianumber.label_tag}}
                         {{form.vianumber}}
                     </p>
-                    <p>
+                    <p class="smaller">
                         {{form.floor.label_tag}}<br>
                         {{form.floor}}
                     </p>
-                    <p>
+                    <p class="smaller">
                         {{form.letter.label_tag}}<br>
                         {{form.letter}}
                     </p>
-                    <p>
+                    <p class="smaller">
                         {{form.cp.label_tag}}<br>
                         {{form.cp}}
                     </p>

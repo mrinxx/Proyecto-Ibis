@@ -7,6 +7,8 @@ from users.models import Teacher, Cicle
 from django.contrib.auth.models import User
 
 # Create your views here.
+
+
 def home(request):
     news=New.objects.all()[:6]
     return render(request, "core/html/index.html",{'news':news})

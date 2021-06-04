@@ -9,10 +9,10 @@ from django.contrib import messages
 # Create your views here.
 def contact(request):
     contactform=ContactForm()
+    is_ok = True
     if request.method=="POST":
         contactform=ContactForm(data=request.POST)
         if contactform.is_valid():
-            print(contactform.is_valid())
             name=request.POST.get('name','')
             lastname=request.POST.get('lastname','')
             phone=request.POST.get('phonenumber','')
@@ -27,8 +27,7 @@ def contact(request):
             try:
                 email.send()
                 contactform=ContactForm()
-                return(redirect(reverse('contact')+"?ok"))
             except:
                 contactform=ContactForm()
-                return(redirect(reverse('contact')+"?failure"))
-    return render(request, "contact/html/contact.html",{'form':contactform})
+                is_ok = False
+    return render(request, "contact/html/contact.html",{'form':contactform, 'ok': is_ok})
