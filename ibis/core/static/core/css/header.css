@@ -24,17 +24,17 @@ body{
     margin: 0;
 }
 
-#min-menu-navegacion{
+#min-menu-navegacion,#zona-logo-min{
     display: none;
 }
 /*PARTE SUPERIOR*/
-#zona-logo{
+#zona-logo-max{
     background-color: var(--primary-color);
     width: 100%;
     height: 10%;
     min-height: 10vh;
 }
-#zona-logo a{
+#zona-logo-max a{
     display: inherit;
     margin-top:0;
 }
@@ -132,15 +132,25 @@ button{
 
 
 @media screen and (max-width:1024px){
-    #zona-logo{
+    #zona-logo-min{
+        display: block;
         background-color: var(--background-color);
+        width: 100%;
+        height: 10%;
+        min-height: 10vh;
     }
-    #max-menu-navegacion{
+    #zona-logo-min a{
+        display: inherit;
+        margin-top:0;
+    }
+    
+    #max-menu-navegacion,#zona-logo-max{
         display: none;
     }
 
-    #logo{
-        width: 20%;
+    #logo-min{
+        width: 15%;
+        margin: auto auto auto 40%; 
     }
     #min-menu-navegacion{
         display: inline-block;
@@ -168,8 +178,8 @@ button{
    
     #min_menu{
         width: 90vw;
-        height: 70vh; 
-        border:2px solid black;
+        height: 90vh; 
+        border:3px solid black;
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
         background-color: #FAA81D;
@@ -201,14 +211,7 @@ button{
 }
 @media screen and (max-width:480px){
     /*PARTE SUPERIOR*/
-    #zona-logo{
-        background-color: var(--background-color);
-    }
-    #max-menu-navegacion{
-        display: none;
-    }
-
-    #logo{
+    #logo-min{
         width: 20%;
     }
     #min-menu-navegacion{
@@ -236,17 +239,7 @@ button{
 
    
     #min_menu{
-        width: 90vw;
-        height: 70vh; 
-        border:2px solid black;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        background-color: var(--primary-color);
-        margin-left: 10%;
-        margin-top:3.5%;
-        opacity: 95%;
-        position: absolute;
-        z-index: 2;
+        height: 80vh;     
     }
 
     
@@ -260,5 +253,6 @@ button{
         padding: 0;
         grid-row-gap: 28px;
         text-align: center;
+
     }
 }

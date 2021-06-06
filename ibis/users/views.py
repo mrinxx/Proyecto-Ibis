@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.http import JsonResponse #Se utiliza para mandar la respuesta en formato JSON
+from django.http import HttpResponseRedirect,HttpResponseForbidden,JsonResponse #Se utiliza para mandar la respuesta en formato JSON
 from django.core.serializers import serialize #Se usa para poder pasar QuerySet a Json
 from .models import *
 import datetime #utilizado para la validación de la fecha de nacimiento
@@ -8,12 +8,36 @@ from .forms import LoginForm, RegisterForm
 from django.contrib.auth import  login
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from django.utils.decorators import method_decorator
-from django.contrib.auth import decorators
-from users.decorators import testGuardian
-
+from django.template.loader import render_to_string
 # Create your views here.
 
+
+
+
+######DECORADORES######
+def only_guardians(func):
+    def inner(*args, **kwargs):
+        request = args[0] if args else kwargs['request'] if 'request' in kwargs else None
+        if request is not None and request.user.is_staff:
+            respuesta = HttpResponseForbidden()
+            respuesta.writelines(render_to_string('errors/forbidden.html'))
+            respuesta.close()
+            return respuesta
+        return func(*args, **kwargs)
+    return inner
+
+def only_teachers(func):
+    def inner(*args, **kwargs):
+        request = args[0] if args else kwargs['request'] if 'request' in kwargs else None
+        if request is not None and not request.user.is_staff:
+            respuesta = HttpResponseForbidden()
+            respuesta.writelines(render_to_string('errors/forbidden.html'))
+            respuesta.close()
+            return respuesta
+        return func(*args, **kwargs)
+    return inner
+
+#######################
 #Vista que muestra el formulario de inicio de sesión
 def login(request):
     form=LoginForm()
@@ -88,6 +112,7 @@ def register(request):
 
 # # @method_decorator(testGuardian, name='dispatch')
 @login_required(login_url="login") #en caso de no estar logueado, se redirige aqui
+@only_guardians
 def guardianPanel(request):
     user=User.objects.filter(username=request.user)  #usuario logueado
     guardian=Guardian.objects.filter(user_id=user[0].id) #tutor legal que corresponde al usuario logueado
@@ -103,10 +128,21 @@ def guardianPanel(request):
         teacheruser=User.objects.filter(id=teacher[0].user_id) #se busca el usuario correspondiente al tutor
         classrooms.append(classroom[0]) 
         userteachers.append(teacheruser[0])
-        
-    # teacher=Teacher.objects.filter(id=children.teacher_id)
     return render(request,'users/html/userpanel.html',{'user':user[0],'guardian':guardian[0],'children':children,'teachers':teachers,'userteacher':userteachers,'classrooms':classrooms})
 
+@login_required(login_url="login") #en caso de no estar logueado, se redirige aqui
+@only_teachers
+def teacherPanel(request):
+    user=User.objects.filter(username=request.user)
+    #en caso de que el usuario sea administrador, se redirigirá al panel de administración de Django desde donde se puede 
+    #administrar los elementos del sitio
+    if user[0].is_superuser:
+        return HttpResponseRedirect(reverse('admin:index'))
+    else:
+        teacher=Teacher.objects.filter(user_id=user[0].id)
+        classroom=Cicle.objects.filter(teacher_id=teacher[0].id)
+        alumns=Alumn.objects.filter(classroom_id=classroom[0].id)
+        return render(request,'users/html/teacherpanel.html',{'user':user[0],'cicle':classroom[0],'teacher':teacher[0],'alumns':alumns})
 # def validateDate(date):
 #     today=datetime.datetime.now()
 #     if date.getyear()>=  today.date.

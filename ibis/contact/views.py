@@ -1,15 +1,15 @@
+from typing import final
 from django.core.mail.message import EmailMessage
 from django.shortcuts import render,redirect
 from .forms import ContactForm
 from django.urls import reverse
 from ibis.settings import EMAIL_HOST_USER #importo el usuario de correo que va a recibir los correos
 from django.core.mail import send_mail
-from django.contrib import messages
 
 # Create your views here.
 def contact(request):
     contactform=ContactForm()
-    is_ok = True
+    is_ok = "ok"
     if request.method=="POST":
         contactform=ContactForm(data=request.POST)
         if contactform.is_valid():
@@ -29,5 +29,7 @@ def contact(request):
                 contactform=ContactForm()
             except:
                 contactform=ContactForm()
-                is_ok = False
-    return render(request, "contact/html/contact.html",{'form':contactform, 'ok': is_ok})
+                is_ok = "not ok"
+            finally:
+                return render(request, "contact/html/contact.html",{'form':contactform,'is_ok':is_ok})
+    return render(request, "contact/html/contact.html",{'form':contactform})

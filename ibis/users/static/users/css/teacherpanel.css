@@ -1,0 +1,98 @@
+*{
+    box-sizing: border-box;
+}
+main{
+    margin-bottom: 5%;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+body{
+    background-color: #F9F9F8;
+    font-family: 'Montserrat',serif,Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+}
+
+#page-top{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding-left: 60px;
+    padding-right: 60px;
+    
+}
+
+h1{
+    font-family: 'Abril Fatface',serif,Arial, Helvetica, sans-serif;
+    font-size: 8.5em;
+    margin-block-start: 0.5em;
+    text-align: center;
+}
+.teacher-img{
+    width: 500px;
+    height: 500px;
+    height: 68%;
+    border-radius: 50%;
+    border: 3px solid black;
+    margin-top: 25%;
+}
+
+h2{
+    background-color: #FAA81D;
+    color: #F9F9F8;
+    font-family: 'Abril Fatface',serif,Arial, Helvetica, sans-serif;
+    font-size: 5em;
+    letter-spacing: 7px;
+    text-align: center;
+    padding: 2%;
+}
+
+h3{
+    font-size: 3em;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+#child-container, #personal-data, #account-data{
+    padding-left: 60px;
+    padding-right: 60px;
+}
+#address-data{
+    margin:auto auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(2,1fr);
+    column-gap: 10px;
+    row-gap: 15px;
+    justify-items: center;
+    align-items: center;  
+}
+#course{
+    padding-left:60px;
+    padding-right: 60px;
+}
+#close-session{
+    padding-left: 60px;
+    padding-right: 60px;
+    font-size: 1.5em;
+    margin-left: 69%;
+    font-weight: 800;
+}
+.title{
+    font-size:1.5em;
+    font-weight: 800;
+}
+
+.alert{
+    display:block;
+    border: 3px solid var(--black);
+    text-align: center;
+    width: 87.5%;
+    margin: auto;
+    border-radius: 10px;
+    background-color:var(--primary-color);
+    font-weight: 800;margin-bottom:5%
+}

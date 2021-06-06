@@ -1,0 +1,47 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
+    <script src="{% static 'users/javascript/loginactions.js'%}" crossorigin="anonymous"></script>
+    <script src="{% static 'users/javascript/passwordactions.js'%}" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'users/css/teacherpanel.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+
+    <title>Panel de profesorado-Escuela infantil Ibis</title>
+</head>
+<body>
+    {% include 'core/html/bases/header.html' %}    
+    <main>
+            <div id="page-top">
+                <h1>{{user.first_name}} {{user.last_name}}</h1>
+                <img class="teacher-img" src="/media/{{teacher.image}}">
+            </div>
+            <a id="close-session" href={% url 'logout' %}><span><i class="fas fa-door-open"></i></span>Cerrar sesión</a>
+            <h2>Curso a cargo</h2>
+            <section id="course">
+            <h3>Tutor del ciclo : {{cicle.classroom}}</h3>
+            {% if not alumns %}
+                <div class="alert"><p>¡Todavía no hay nada por aquí. Revíselo en otro momento!</p></div>
+            {% else %}
+                {% for alumn in alumns %}
+                    <div id="alumncontainer">
+                        <img class="child-img" src="/media/{{alumn.image}}" alt="alumn-image">
+                        <h4>{{child.name}} {{child.last_name}}</h4>
+                        <p><span class="title">Fecha de nacimiento: </span><span>{{child.birth_date}}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            </section>
+
+             
+            
+    </main>
+
+    {% include 'core/html/bases/footer.html' %}
+    </body>

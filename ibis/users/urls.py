@@ -12,6 +12,7 @@ urlpatterns = [
     path('register/',views.register,name="register"),
     path('guardiandetails/',views.guardianDetails,name="guardiandetails"),
     path('userpanel/',views.guardianPanel,name="userpanel"),
+    path('teacherpanel/',views.teacherPanel,name="teacherpanel")
 
 ]
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

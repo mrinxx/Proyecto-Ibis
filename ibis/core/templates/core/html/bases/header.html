@@ -4,12 +4,10 @@
 <link rel="stylesheet" href="{% static 'core/css/header.css' %}">
 
 <header>
-    <div id="zona-logo">
+
+    <div id="zona-logo-max">
         <a href="{% url 'home' %}">
-            <picture>
-                <source srcset="{% static 'core/recursos/imagenes/logo-small.svg' %}" media="(max-width: 1024px)">
-                <img id="logo" src="{% static 'core/recursos/imagenes/logo-full.svg' %}">
-            </picture>
+            <img id="logo" src="{% static 'core/recursos/svg/logo-full.svg' %}">
         </a>
     </div>
     <nav id="max-menu-navegacion" >
@@ -18,14 +16,19 @@
                     <li><a href="{% url 'services' %}">Servicios</a></li>
                     <li><a href="{% url 'contact' %}">Contacto</a></li>
                     <li><a href="{% url 'userpanel' %}">Zona de usuarios</a></li>
-                    <li><a href="{% url 'home' %}">Zona de empleados</a></li> <!-- CAMBIAR-->
+                    <li><a href="{% url 'teacherpanel' %}">Zona de empleados</a></li> <!-- CAMBIAR-->
                     <li><i id="search-icon" class="fas fa-search" onclick="search()"></i></li>
                     <li><i id="dark-icon" class="far fa-moon" onclick="darkMode()"></i></li>
                 </ul>    
     </nav>
+    <div id="zona-logo-min">
+        <a href="{% url 'home' %}">
+            <img id="logo-min" src="{% static 'core/recursos/svg/logo-small.svg' %}">
+        </a>
+    </div>
    <nav id="min-menu-navegacion" >
         <div id="min-menu-navegacion_icon__container">
-            <button id="min-menu-navegacion_icon__link" onclick="displayMenu()"><i class="fas fa-bars"></i></button>
+            <button id="min-menu-navegacion_icon__link"><i id="min-menu-icon" class="fas fa-bars"></i></button>
         </div>
         <div id="min_menu" style="display:none">
             <ul id="navegation-pages_min">
@@ -33,7 +36,7 @@
                 <li><a href="{% url 'services' %}">Servicios</a></li>
                 <li><a href="{% url 'contact' %}">Contacto</a></li>
                 <li><a href="{% url 'userpanel' %}">Zona de usuarios</a></li>
-                <li><a href="{% url 'home' %}">Zona de empleados</a></li> <!-- CAMBIAR-->
+                <li><a href="{% url 'teacherpanel' %}">Zona de empleados</a></li> <!-- CAMBIAR-->
                 <li><i id="min-search-icon" class="fas fa-search" onclick="search()"></i></li>
                 <li><i id="min-dark-icon" class="far fa-moon" onclick="darkMode()"></i></li>
             </ul>    

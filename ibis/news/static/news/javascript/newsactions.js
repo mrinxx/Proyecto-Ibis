@@ -68,34 +68,33 @@ function charge(){
         }
     }
     else if(newslist.length-newsdisplayed<=6){
-        for(let i=newsdisplayed;i<=newslist.length;i++){
+        for(let i=newsdisplayed;i<=newslist.length-1;i++){
             createView(newslist[i]);
+            newsdisplayed++;
         }
+        document.getElementById("charge-news").style="display:none";
     }
-    // while(true){
-    //     createView(newslist[newsdisplayed]);
-    //     newsdisplayed++;
-    //     if(newsdisplayed==auxcont+6){
-    //         break;
-    //     }
-    // }
+
 }
 
 //Con esta función se muestra que no hay noticias en caso de que no haya noticias
 function createAlert(divToShow){
-     let notElementsWarn=document.getElementById(divToShow)
-     notElementsWarn.style="display:block;border: 3px solid black;text-align: center;width: 85.5%;height:70px;margin: auto;border-radius: 10px;background-color: #FAA81D;font-weight: 800;margin-bottom:5%";
+     document.getElementById(divToShow)
+     //notElementsWarn.style="display:block;border: 3px solid black;text-align: center;width: 85.5%;height:70px;margin: auto;border-radius: 10px;background-color: #FAA81D;font-weight: 800;margin-bottom:5%";
 }
 
+//Se va a ir creando el elemento que muestra la noticia en pantalla
 function createView(element){
+
+    // Se crea el div que contiene toda la noticia
     let containernew=document.createElement("div");
     containernew.id=element.fields.title;
 
-    
-    let containertitle=document.createElement("div");
+    //Se crea el contenedor que va a tener el título de la noticia
+    let containertitle=document.createElement("div");//                 <div class="new-title"> containertitle
         containertitle.className="new-title";
-
-        let newtitle=document.createElement("h3");
+        //titulo de la noticia
+        let newtitle=document.createElement("h3");//                     <h3>{{new.title}}</h3>       newtitle  
         newtitle.textContent=element.fields.title;
                     
         containertitle.appendChild(newtitle);
@@ -105,19 +104,24 @@ function createView(element){
         containerdescription.className="new-description";
         containerdescription.id=element.fields.title;
 
-        let containerdescriptiontext=document.createElement("div");
+        let description=document.createElement("div");
+        description.className="description";
         let text=document.createElement("a");
         text.href="details/"+element.pk;
         text.textContent=element.fields.subtitle;
         text.className="new-description-text";
-        containerdescriptiontext.appendChild(text);
+        description.appendChild(text);
 
+
+        let wrapperimg=document.createElement("div");
+        wrapperimg.className="wrapperimg";
         let principalimg=document.createElement("img");
         principalimg.className="new-img";
         principalimg.src="/media/"+element.fields.media1;
+        wrapperimg.appendChild(principalimg);
 
-        containerdescription.appendChild(principalimg);
-        containerdescription.appendChild(containerdescriptiontext);
+        containerdescription.appendChild(description);
+        containerdescription.appendChild(wrapperimg);
 
                     
         containernew.appendChild(containerdescription);
