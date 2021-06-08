@@ -1,6 +1,7 @@
 {%load static%}
 
 <script src="{% static 'core/javascript/menufunctions.js' %}"></script>
+<script src="{% static 'core/javascript/search.js' %}"></script>
 <link rel="stylesheet" href="{% static 'core/css/header.css' %}">
 
 <header>
@@ -45,10 +46,33 @@
 </header>
 <div id="searchbar" style="display:none">
     <div id="searchbarcontainer">
-     <label for="search" aria-label:"search"></label>
+     <label for="search" aria-label="search"></label>
      <span id="icon"><i class="fas fa-search"></i></span>
      <input type="text" id="search">
      <button id="close"><span><i class="fas fa-times"></i></span></button>
     </div>
-   
+    <div id="content">
+    <div>
+        <h3>Noticias</h3>
+        <div id="content-news">
+            <div id="alertNews" class="alert" style="display:none"><p>No se han encontrado noticias coincidentes con el criterio</p></div>
+        </div>      
+    </div>
+    <div>
+        <h3>Eventos</h3>
+        <div id="content-events">
+            <div id="alertEvents" class="alert" style="display:none"><p>No se han encontrado noticias eventos con el criterio</p></div>
+        </div>      
+    </div>
+    <div>
+        <h3>Recursos</h3>
+        <div id="content-resources">
+            <div id="alerttest" class="alert" style="display:none"><p>No se han encontrado recursos coincidentes con el criterio</p></div>
+        </div>      
+    </div>
+
+
+
+            
+    </div>
 </div>

@@ -65,3 +65,50 @@ h3{
     font-weight: 800;
 }
 
+
+.clicker {
+    position: relative;
+    transition: all 0.2s ease;
+    border: none;
+    background-color: #F9F9F8;
+    /* margin-left:30%; */
+    margin-top:2%;
+  }
+  /* Elemento de color */
+  .clicker:before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: 0;
+    display: block;
+    border-radius: 10px;
+    background: #FAA81D;
+    width: 56px;
+    height: 56px;
+    transition: all 0.3s ease;
+  }
+  
+  .clicker span {
+    position: relative;
+    font-size: 16px;
+    font-weight: 900;
+  }
+  
+  .clicker:hover:before {
+    width: 100%;
+    background: #FAA81D;
+  }
+
+@media screen and (max-width:1024px){
+    h1{
+        font-size:6em
+    }
+    h2{
+        font-size:4em;        
+    }
+}
+@media screen and (max-width:480px){
+    h1{
+        font-size:5em
+    }
+}

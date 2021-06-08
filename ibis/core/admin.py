@@ -7,5 +7,6 @@ from .models import *
 admin.site.register(Event)
 admin.site.register(Menu)
 admin.site.register(Timetable)
+admin.site.register(Resource)
 
 

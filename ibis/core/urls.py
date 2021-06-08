@@ -13,6 +13,8 @@ urlpatterns = [
     path('getevents',views.getEvents,name="getevents"),
     path('gettimetables',views.getTimetables,name="gettimetables"),
     path('getmenus',views.getMenus,name="getmenus"),
+    path('search',views.search,name="search"),
+    path('events/',views.events,name="events")
 
 ]
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

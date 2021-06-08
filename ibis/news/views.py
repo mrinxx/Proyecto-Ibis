@@ -17,3 +17,5 @@ def details(request,id):
     mynew=New.objects.filter(id=id)
     return render(request,"news/html/details.html",{'new':mynew})
 
+
+

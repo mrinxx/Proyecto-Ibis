@@ -15,3 +15,6 @@ class New(models.Model):
     media6=models.ImageField(blank=True, null=True)
     new_created_at=models.DateField(auto_now_add=True)
     new_updated_at=models.DateField(auto_now=True)
+
+    class Meta:
+        db_table="news"

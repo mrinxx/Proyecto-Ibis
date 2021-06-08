@@ -11,7 +11,7 @@ $(document).ready(function(){
             // months: Lista que guarda los meses del año para compararlos con el que devuelve la fecha numéricamente
             const months=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 
-            let jsonEvents=JSON.parse(data.events);
+            let jsonEvents=JSON.parse(data.events).reverse(); //se le
             //en caso de que no haya eventos se va mostrar un mensaje
             if(jsonEvents.length==0){
                 document.getElementById("see-more__events").style="display:none";
@@ -37,7 +37,7 @@ $(document).ready(function(){
 
                     let spanmonth=document.createElement("span");
                     spanmonth.className="date-month";
-                    spanmonth.textContent=months[date.getMonth()]; //se coge el mes que corresponde en la lista de meses declarada
+                    spanmonth.textContent=months[date.getMonth()]+"/"+date.getFullYear(); //se coge el mes que corresponde en la lista de meses declarada
 
                     containerdate.appendChild(spanday);
                     containerdate.appendChild(linebreak);

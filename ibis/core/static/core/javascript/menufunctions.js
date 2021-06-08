@@ -3,9 +3,7 @@ function search(){
     document.getElementById("searchbar").style.display="block";
 }
 $(function(){ 
-$("#close").click(function(){
-    document.getElementById("searchbar").style.display="none";
-})
+
 
 $("#min-menu-navegacion_icon__link").click(function(){
     let menu=document.getElementById('min_menu');

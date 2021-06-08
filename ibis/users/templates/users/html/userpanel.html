@@ -7,22 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/7cc1d6c564.js" crossorigin="anonymous"></script>
-    <script src="{% static 'users/javascript/loginactions.js'%}" crossorigin="anonymous"></script>
     <script src="{% static 'users/javascript/passwordactions.js'%}" crossorigin="anonymous"></script>
+    <script src="{% static 'users/javascript/panelactions.js'%}" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="{% static 'users/css/userpanel.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/panelsmodals.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
 
     <title>Panel de usuario-Escuela infantil Ibis</title>
 </head>
 <body>
     {% include 'core/html/bases/header.html' %}    
-    <main>
+    <main>  
             <h1>{{user.first_name}} {{user.last_name}}</h1>
+            {% if guardian.image %}
+                <img id="peopleimg" alt="imagen de"{{user.first_name}} {{user.last_name}} src="/media/{{guardian.image}}">
+            {% endif %}
             <a href={% url 'logout' %}><span><i class="fas fa-door-open"></i></span>Cerrar sesión</a>
             <p>En caso de necesitar ponerse en contacto con nosotros hagalo a través de <a href={% url 'contact' %}> este enlace <a></p>
             <h2>Menores a cargo</h2>
-            <div id="child-container">
+            <section id="child-container">
                 {%for child in children%}
                     <img class="child-img" src="/media/{{child.image}}">
                     <h3>{{child.name}} {{child.last_name}}</h3>
@@ -46,9 +50,23 @@
                     {% endfor %}
                 {% endfor %}
                 
-            </div>
+            </section>
+
+
             <h2>Datos personales</h2>
-             <div id="personal-data">
+             <section id="personal-data">
+             {% comment %} <form>
+                <fieldset>
+                    <legend>Datos personales</legend>
+                </fieldset>
+                <fieldset>
+                    <legend>Domicilio</legend>
+                </fieldset>
+                <fieldset>
+                    <legend>Datos de contacto</legend>
+                </fieldset>
+             </form> {% endcomment %}
+
                 <p><span class="title">DNI: </span><span>{{guardian.dni}}</span></p>
                 <p><span class="title">Fecha de nacimiento: </span><span>{{guardian.birth_date}}</span></p>
                 <p class="title">Domicilio:</p>
@@ -60,13 +78,29 @@
                     </div>
                 <p><span class="title">Número de teléfono:</span><span>{{guardian.phone}}</span></p>
                 <p><span class="title">Correo electrónico:</span><span>{{user.email}}</span></p>
-             </div>
+             </section>
+
             <h2>Datos de la cuenta</h2>
-            <div id="account-data">
+            <section id="account-data">
                 <p><span class="title">Código: </span><span>{{guardian.guardiancode}}</span></p>
                 <p><span class="title">Nombre de usuario: </span><span>{{user.username}}<span></p>
-                <p><span class="title">Contraseña: </span></p><button>Cambiar contraseña</button>
-            </div>    
+               <button id="passwordchanger" class="clicker"><span>Cambiar Contraseña</span></button>
+            </section> 
+            
+
+            <div id="passwordModal" class="modal" display="none">
+            <div class="modal-content">
+                    <button id="close-modal" class="close"><i class="fas fa-times"></i></button>
+                    <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="clicker"><span>Cambiar contraseña</span></button>
+                    
+                </form>
+                </div>
+
+            </div> 
+            </div>
     </main>
 
     {% include 'core/html/bases/footer.html' %}

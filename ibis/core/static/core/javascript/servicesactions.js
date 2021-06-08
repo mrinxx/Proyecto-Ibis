@@ -1,10 +1,4 @@
-let agesmap= new Map();
-agesmap.set("1E", '0-1 años');
-agesmap.set("2E", '1-2 años');
-agesmap.set("3E", '2-3 años');
-agesmap.set("4E", '3-4 años');
-agesmap.set("5E", '4-5 años');
-agesmap.set("6E", '5-6 años');
+
 
 let allTimetables;
 let allMenus;
@@ -18,17 +12,16 @@ $(document).ready(function(){
         success: function (data){      
             let jsonTimetables=JSON.parse(data.timetables);
             allTimetables=jsonTimetables; //cargo en la lista todos los elementos que he recuperado
+            let jsonCicles=JSON.parse(data.cicles)
             if(jsonTimetables.length==0){
                 document.getElementById("school-times__selector").style="display:none";
                 document.getElementById("school-times__result").style="display:none";
                 createAlert("alertTimetables");
             }else{
-                for(timetable of jsonTimetables){
+                for(let cicle of jsonCicles){
                     let selectdropdowntimetables=document.getElementById("school-times__selector");
                     let optionagetimetables=document.createElement("option");
-                    optionagetimetables.value=agesmap.get(timetable.fields.age);
-                    optionagetimetables.text=agesmap.get(timetable.fields.age)
-                    selectdropdowntimetables.append(optionagetimetables);
+                    selectdropdowntimetables.append(cicle.fields.classroom);
                 }
         }
         },

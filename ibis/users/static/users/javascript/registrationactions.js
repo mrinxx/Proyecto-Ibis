@@ -34,6 +34,14 @@ function Guardian(codigo,username,password,dni,nombre,apellidos,nacimiento,tipov
 }
 
 $(function(){ 
+
+    $("#toregister").click(function(){
+        $("#registerModal").show();
+    })
+
+    $("#close-modal").click(function(){
+        $("#registerModal").hide();
+    })
     //con esta función se buscará el código del usuario para así obtener los datos y que se muestren
     $('#id_code').keyup(function() {
       let code=$(this).val();
@@ -79,11 +87,11 @@ $(function(){
                           jsonGuardian[0].fields.privacity,
                           jsonGuardian[0].fields.terms,
                           jsonGuardian[0].fields.newsletter,
-                          jsonUser[0].fields.is_active,
+                          jsonGuardian[0].fields.activated,
                           jsonGuardian[0].fields.image
                           );
 
-                          if (guardian.activado==false){
+                          if (guardian.activado=="No"){
                               guardian.activado="no";
                           }else{
                               guardian.activado="si";
@@ -96,9 +104,9 @@ $(function(){
                           }
                           else{
                               document.getElementById('id_dni').value=guardian.dni.toUpperCase();
-                              document.getElementById('id_name').value=guardian.nombre;
-                              document.getElementById('id_username').value=guardian.username;
-                              document.getElementById('id_lastname').value=guardian.apellidos;
+                              document.getElementById('name').value=guardian.nombre;
+                              document.getElementById('username').value=guardian.username;
+                              document.getElementById('last_name').value=guardian.apellidos;
                               document.getElementById('id_birthdate').value=guardian.nacimiento;
                               document.getElementById("id_viatype").selected=viatypes.get(guardian.tipovia);
                               document.getElementById("id_vianame").value=guardian.nombrevia;
@@ -107,8 +115,8 @@ $(function(){
                               document.getElementById("id_letter").value=guardian.letra;
                               document.getElementById("id_cp").value=guardian.cp;
                               document.getElementById("id_city").value=guardian.ciudad;
-                              document.getElementById('id_email').value=guardian.email;
                               document.getElementById('id_phonenumber').value=guardian.numero;
+                            //   document.getElementById('email').value=guardian.value;
           
                           }
                   
@@ -134,6 +142,7 @@ function createalert(text){
         }, 5000);
 }
 
+//validación de la contraseña y su repetición
 function validatepasswords(){
     let password=document.getElementById("password");
     let repetition=document.getElementById("passwordrepetition");
@@ -145,7 +154,7 @@ function validatepasswords(){
     }
 }
 
-
+//limpieza de los inputs del formulario
 function cleaninputs(){
     document.querySelectorAll("input").forEach(input => {
         if(input.getAttribute("id")!="id_code"){

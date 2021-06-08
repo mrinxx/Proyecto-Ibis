@@ -20,9 +20,16 @@
 
         <div id="alerta" style="display:none"><p id="message"></p></div> <!-- Muestra información-->
         <div id="formcontainer">
-        {%if not ok %}
-            <div class="alert"><p>Han ocurrido problemas durante el proceso, inténtelo de nuevo</p></div>
-        {%endif%}
+        {%if is_ok%}
+                    {%ifequal is_ok 'ok'%}
+                    
+                        <div class="message"><p>¡El usuario ha sido dado de alta correctamente. Ahora puede iniciar sesión!</p><button class="close"><i class="fas fa-times"></i></button></div>
+                    {%endifequal%}
+                    {%ifequal is_ok 'not ok'%}
+                        <div class="message"><p>Lo sentimos, pero ha ocurrido un error, intentelo de nuevo</p><button class="close"><i class="fas fa-times"></i></button></div>
+                    {%endifequal%}
+                {% endif %}
+            
             <form method="POST" onsubmit="/users/register">
             {% csrf_token %}
                 <!-- En el formulario se encuentran campos deshabilitados ya que son los que un usuario no puede cambiar, como su dni o su
@@ -35,27 +42,14 @@
                     <p>
                         {{form.code.label_tag}}
                         {{form.code}}
-                        
                     </p>
-                    
-                </fieldset>
-                <fieldset id="account">
-                    <legend>Datos de la cuenta</legend>
                     <p id="aclaration">Anote la casilla de nombre de usuario, ya que es con el cual podrá acceder a su zona de usuario</p>
                     <p>
-                        {{form.username.label_tag}}
-                        {{form.username}}
+                        <label for="username">Nombre de usuario:</label><br>
+                        <input type="text" id="username" disabled>
                     </p>
-                    <p>
-                        {{form.password1.label_tag}}
-                        {{form.password1}}<button type="button" id="see_pass" onclick=revealpass(this.id) ><i class="far fa-eye"></i></button>
-                        {{form.password1.errors}}
-                    </p>
-                    <p>
-                        {{form.password2.label_tag}}
-                        {{form.password2}}
-                    </p>
-                </fieldset>
+                    
+                
                 </div>
                 <fieldset id="personal">
                     <legend>Datos personales</legend>
@@ -65,12 +59,12 @@
                         {{form.dni}}
                     </p>
                     <p>
-                        {{form.name.label_tag}}
-                        {{form.name}}
+                        <label for="name">Nombre:</label><br>
+                        <input type="text" id="name" disabled>
                     </p>
                     <p>
-                        {{form.lastname.label_tag}}
-                        {{form.lastname}}
+                        <label for="last_name">Apellidos:</label><br>
+                        <input type="text" id="last_name" disabled>
                     </p>
                     <p>
                         {{form.birthdate.label_tag}}
@@ -111,9 +105,8 @@
                     <legend>Datos de contacto</legend>
                 
                     <p>
-                        {{form.email.label_tag}}
-                        {{form.email}}
-                        {{form.email.errors}}
+                        <label for="email">Correo electrónico:</label><br>
+                        <input type="text" id="email" disabled>
                     </p>
                     <p>
                         {{form.phonenumber.label_tag}}
