@@ -31,7 +31,25 @@ main{
 /*CONTENIDO*/
 main p{
     text-align: center;
-    padding: 1% 3%;
+    padding: 1% 7%;
+}
+
+#about-school p,#about-teaching p{
+    text-align: left;
+    margin:0;
+}
+.firsparagraph{
+    padding-right: 7%;
+    padding-left: 7%;
+    display: inline-block;
+    position: absolute;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+#about-school p::first-letter, #about-teaching p::first-letter{
+    font-size: 2em;
+    font-weight: 500;
 }
 h1{
     font-family: 'Abril Fatface',serif,Arial, Helvetica, sans-serif;
@@ -48,8 +66,17 @@ h2{
     letter-spacing: 7px;
     text-align: center;
     padding: 2%;
+    /* margin-bottom: 0; */
 }
 
+.ppalimg{
+    width: 40%;
+    display: inline-block;
+    margin-top: -65px;
+}
+.ppalimg img{
+    width: 100%;
+}
 .team-name{
     font-size:1.5em;
     font-weight: 600;
@@ -82,15 +109,19 @@ h2{
 }
 
 
+.video{
+    width: 1000px;
+    margin:auto
+}
 
+.video video, .video img{
+    width:100%
+}
 
 
 /*MEDIA QUERIES*/
 
 @media screen and (max-width:1024px){
-    
-   
-
     /*Contenido*/
     h1{
         font-size:5.5em;
@@ -102,6 +133,22 @@ h2{
     main p{
         text-align: left;
         padding: 1% 7%;
+    }
+
+    .video{
+        width: 100%;
+        padding: 1% 7%;
+    }
+
+    
+
+    .firsparagraph{
+        position:initial;
+    }
+    .ppalimg{
+        display: block;
+        width: 100%;
+        /* margin-top: -60px; */
     }
     #about-team__people{
         grid-column-gap:20px;
@@ -121,25 +168,17 @@ h2{
         text-align: center;
     
     }
-    #footer-max_elements-list{
-        margin-left:0;
-    }
-    #footer-max_contact-call,#footer-max_find-us{
-        font-size: 1em;
-    
-    
-    }
-    #footer-max_number,#footer-max_address{
-    
-        font-size: 1.5em;
-        letter-spacing: 0;
-    
-    }
+   
 }
-
+@media screen and (max-width:600px){
+    .teacher-image{
+        width: 140px;
+        height: 140px;
+    }
+    
+}
 @media screen and (max-width:480px){
     
-
     /*Cuerpo de la página*/
     h1{
         font-size: 5em;
@@ -151,6 +190,18 @@ h2{
         margin-top: 0.5em;
         margin-bottom: 0.5em;
         padding: 4%;
+    }
+    /* .video{
+        padding: 0;
+    } */
+
+    .firsparagraph{
+        position:initial;
+    }
+    .ppalimg{
+        display: block;
+        width: 100%;
+        margin-top: -24px;
     }
     #about-team__people{
         margin-left: 5%;

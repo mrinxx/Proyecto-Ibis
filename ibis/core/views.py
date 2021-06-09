@@ -41,13 +41,13 @@ def firstEvents(request):
 
 def getTimetables(request):
     timetables=Timetable.objects.all()
-    cicleslist=[]
+    cicles=[]
     for timetable in timetables:
-        cicle=Cicle.objects.filter(id=timetable.cicle_id)
-        cicleslist.append(cicle)
+        cicle=Cicle.objects.filter(id=timetable.cicle_id).first()
+        cicles.append(cicle)
     data={
         'timetables' : serialize('json',timetables),
-        'cicles':serialize('json',cicleslist)
+        'cicles':serialize('json',cicles)
     }
     return JsonResponse(data)
 

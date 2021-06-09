@@ -225,9 +225,11 @@ input{
         margin-right: auto;
         margin-left: auto;
     }
-    
+    #login-zone__media{
+        width:100%;
+    }
     #video{
-        width: 100vw;
+        width: 100%;
         object-fit: cover;
     }
 

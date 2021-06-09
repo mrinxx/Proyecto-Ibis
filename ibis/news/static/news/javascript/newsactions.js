@@ -1,5 +1,7 @@
 // //Esta variable almacenará todas las noticias que se rescaten de la base de datos para poder manejarlas y cargar las anteriores o las posteriores
 let newslist; 
+
+
 // //contador de las noticias totales que se están mostrando
 let newsdisplayed=0;
 

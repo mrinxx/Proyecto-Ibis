@@ -25,8 +25,6 @@ class Event(models.Model):
     updated_at=models.DateField(auto_now=True)
 
     class Meta:
-        verbose_name="event"
-        verbose_name_plural = "events"
         db_table="events"
         ordering= ["date"]
 

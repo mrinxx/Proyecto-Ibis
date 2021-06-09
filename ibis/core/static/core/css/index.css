@@ -31,16 +31,15 @@ main{
 section{
     padding-left:60px;
     padding-right: 60px;
+    margin-bottom: 2%;
 }
 
 #events h2,#latest-news h2{
     font-family: 'Abril Fatface',serif,Arial, Helvetica, sans-serif;
-    font-size: 3em;
+    font-size: 5.5em;
 }
 
-#events div{
-    margin-bottom: 2%;
-}
+
 
 .event-container{
     height:15vh;
@@ -217,6 +216,12 @@ a {
 /*MEDIA QUERIES*/
 
 @media screen and (max-width:1024px){
+    #events h2 ,#latest-news h2{
+        font-size: 5em;
+        margin: 0;
+        padding: 10px;
+        text-align: center;
+    }
     section{
         padding-left: 0;
         padding-right: 0;
@@ -245,8 +250,8 @@ a {
         border-radius: 10px;
         display: inline-block;
         font-weight: 800;
-        margin-left: 25%;
-        margin-top: 20%;
+        margin-left: 35%;
+        margin-top: 5%;
         padding: 1%;
     }
       /* Elemento de color */
@@ -272,12 +277,14 @@ a {
     }
     .event-container{
         width: 80vw;
+        margin-bottom: 0;
     }
 }
 @media screen and (max-width:800px){
     #news-container{
         display: grid;
         row-gap: 70px;
+        margin-bottom: 11%;
     }
 
     #news-container>div{
@@ -306,15 +313,13 @@ a {
     }
     #events h2 ,#latest-news h2{
         font-size: 4em;
-        margin: 0;
-        padding: 10px;
-        text-align: center;
+
     }
     .event-container{
         margin: auto;
     }
     #event-container{
-        display: block;
+        display: grid;
     }
     .date{
         width: 300px;
@@ -409,8 +414,9 @@ a {
     .new-description-text{
         top:50%
     }
-
-    .event-container{
-        width: initial;
+    .see-more{
+        font-weight: 800;
+        margin-left: 30%;
     }
+
 }
