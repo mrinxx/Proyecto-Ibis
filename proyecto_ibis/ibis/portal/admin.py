@@ -8,5 +8,5 @@ admin.site.register(Event,readOnly)
 admin.site.register(New,readOnly)
 admin.site.register(Timetable,readOnly)
 admin.site.register(Menu,readOnly)
-admin.site.register(Resource,readOnly)
+
 

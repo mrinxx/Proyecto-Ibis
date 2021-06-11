@@ -124,8 +124,10 @@ def guardianPanel(request):
         classroom=Cicle.objects.filter(id=child.classroom_id) #se busca la clase en la que está el menor
         teacher=Teacher.objects.filter(id=classroom[0].teacher_id)
         teacheruser=User.objects.filter(id=teacher[0].user_id) #se busca el usuario correspondiente al tutor
+        
         classrooms.append(classroom[0]) 
         userteachers.append(teacheruser[0])
+        
     if request.method=='POST':
         formpersonaldata=personalDataChangeForm(request.POST)
         if formpersonaldata.is_valid():

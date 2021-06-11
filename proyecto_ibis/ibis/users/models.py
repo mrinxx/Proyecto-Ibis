@@ -95,11 +95,7 @@ class Alumn(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,unique=True)
     id=models.AutoField(primary_key=True)
     dni=models.CharField(unique=True,max_length=9)
-    name=models.CharField(max_length=50)
-    last_name=models.CharField(max_length=150)
     birth_date=models.DateField(default=django.utils.timezone.now,blank=False,null=False,validators=[validate_age_children])
-    address=models.CharField(max_length=200)
-    city=models.CharField(max_length=50)
     image=models.ImageField(upload_to="alumns",blank=True)
     legal_tutor=models.ForeignKey(Guardian, on_delete=models.CASCADE) #1 alumno 1 tutor legal -> 1 tutor legal muchos alumnos
     classroom = models.ForeignKey(Cicle, on_delete=models.CASCADE) #1 alumno 1 tutor -> 1 tutto muchos alumnos
