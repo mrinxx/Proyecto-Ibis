@@ -31,8 +31,9 @@
              <div class="alert"> <p>No se han encontrado datos en estos momentos</p></div>
             {% endif %}
                 {%for child in children%}
+                    
                     <img class="child-img" src="/media/{{child.image}}">
-                    {%for user un%}
+                    
                     <h3>{{child.name}} {{child.last_name}}</h3>
                     <p><span class="title">Fecha de nacimiento: </span><span>{{child.birth_date}}</span>
                     {% for classroom in classrooms%}
