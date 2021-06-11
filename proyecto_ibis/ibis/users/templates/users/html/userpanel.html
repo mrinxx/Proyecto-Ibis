@@ -32,9 +32,23 @@
             {% endif %}
                 {%for child in children%}
                     <img class="child-img" src="/media/{{child.image}}">
+                    {%for user un%}
                     <h3>{{child.name}} {{child.last_name}}</h3>
                     <p><span class="title">Fecha de nacimiento: </span><span>{{child.birth_date}}</span>
-                    <p><span class="title">Clase: </span><span>{{child.classroom}}</span></p>
+                    {% for classroom in classrooms%}
+                        {%ifequal child.classroom_id classroom.id%}
+                            <p><span class="title">Clase: </span><span>{{classroom.classroom}}</span></p>
+                            {%for teacher in teachers%}
+                            {%ifequal teacher.id classroom.teacher_id%}
+                                {%for user in userteacher%}
+                                    {%ifequal user.pk teacher.user_id%}
+                                        <p><span class="title">Tutor: </span><span>{{user.first_name}} {{user.last_name}}</span></p>
+                                    {%endifequal%}
+                                {% endfor %}
+                            {%endifequal%}
+                            {% endfor %}
+                        {%endifequal%}
+                    {%endfor%}
                     {% comment %} 
                     Para buscar el tutor de ese alumno se realizaran 2 bucles:
                         -El primero para encontrar de entre todos los que tutores que llegan desde la vista, el que tenga el id 

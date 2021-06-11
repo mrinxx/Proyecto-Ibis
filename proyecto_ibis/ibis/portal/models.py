@@ -71,16 +71,7 @@ class New(models.Model):
 
     class Meta:
         db_table="news"
-class Resource(models.Model):
-    id=models.AutoField(primary_key=True)
-    description=models.CharField(max_length=400)
-    resource_created_at=models.DateField(auto_now_add=True)
-    resource_updated_at=models.DateField(auto_now=True)
-    created_at=models.DateField(auto_now_add=True)
-    updated_at=models.DateField(auto_now=True)
 
-    class Meta:
-        db_table="resources"
     
 
 

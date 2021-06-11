@@ -20,24 +20,24 @@
             <div id="image-wrapper" style="background-image: url('/media/{{new.media1}}')">
             </div>
                 <h1 id="image-zone__title">{{new.title}}</h1>
-            
         </div>
         <section id="new-content">
             <p>{{new.content}}</p>
             
         </section>
+        {%if images%}
         <!-- Esta sección se hará visible en caso de que la noticia en cuestión tenga algún elemento multimedia -->
         <h2>Galeria</h2>
         <section id="new-gallery" >
             <div id="gallery-container">
-            {{images}}
-                <image>
-                <image>
-                <image>
-                <image>
+            {%for image in images%}
+                <img src="/media/{{image}}">
+            {%endfor%}
             </div>
 
         </section>
+
+        {%endif%}
         {%endfor%}
     </main>
     {% include 'portal/html/bases/footer.html' %}

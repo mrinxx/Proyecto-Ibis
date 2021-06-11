@@ -4,15 +4,12 @@ $(function(){
         document.getElementById("search").value=
         document.getElementById("content-news").innerHTML="";
         document.getElementById("content-events").innerHTML="";
-        document.getElementById("content-resources").innerHTML="";
     })
     $("#search").keyup(function(){
         
         document.getElementById("content-news").innerHTML="";
         document.getElementById("content-events").innerHTML="";
-        document.getElementById("content-resources").innerHTML="";
         let value=$(this).val();
-        console.log(value.length)
         if(value!=""){
         $.ajax({
             url: '/search',
@@ -26,7 +23,6 @@ $(function(){
                 const months=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
                 let dataEvents=JSON.parse(data.events).reverse();
                 let dataNews=JSON.parse(data.news).reverse();
-                let dataResources=JSON.parse(data.resources);
                 
                 dataNews.forEach(New => {
                     let newlink= document.createElement("a");
@@ -41,12 +37,6 @@ $(function(){
 
                 });
 
-                dataResources.forEach(Resource => {
-                    let description=document.createElement("p");
-                    description.textContent=Resource.fields.description;
-                    description.className="found";
-                    document.getElementById("content-resources").appendChild(description);
-                });
 
                 dataEvents.forEach(Event => {
                     let eventparagraph=document.createElement("p");

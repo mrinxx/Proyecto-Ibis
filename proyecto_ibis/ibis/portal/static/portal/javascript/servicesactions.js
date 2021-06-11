@@ -82,13 +82,13 @@ function takeImage(elementsList,cicles,divTodisplay,type,value){
     let selection;
 
     for(let cicle of cicles){
-        if(value==cicle.classroom){
+        if(value==cicle.fields.classroom){
             selection=cicle.pk;
         }
     }
 
     for(let element of elementsList){
-        if(element.fields.cicle_id==selection){
+        if(element.fields.cicle==selection){
             let resultimage=document.createElement("img");
             let imageTodisplay;
             if(type=="timetable"){
@@ -100,6 +100,8 @@ function takeImage(elementsList,cicles,divTodisplay,type,value){
             document.getElementById(divTodisplay).appendChild(resultimage);
         }
     }
+    
+    
 }
 
 function createAlert(divToShow){

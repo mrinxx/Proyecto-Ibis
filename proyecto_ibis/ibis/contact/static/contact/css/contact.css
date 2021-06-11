@@ -85,6 +85,9 @@ width: 90%;
 outline: none;
 }
 
+input:focus{
+    border: 4px solid var(--primary-color);
+}
 /* .labelclicked{
     font-size:0.85em
 }

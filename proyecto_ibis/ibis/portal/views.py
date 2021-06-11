@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.http import JsonResponse #Se utiliza para mandar la respuesta en formato JSON
 from django.core.serializers import serialize #Se usa para poder pasar QuerySet a Json
-from .models import Event,  Menu, Timetable, Resource,New
+from .models import Event,  Menu, Timetable, New
 from users.models import Teacher, Cicle
 from django.contrib.auth.models import User
 
@@ -23,7 +23,6 @@ def getEvents(request):
         'events' : serialize('json',Event.objects.all().order_by('date')) 
     }
     return JsonResponse(data)
-
 
 
 def getTimetables(request):
@@ -53,24 +52,29 @@ def getNews(request):
 
 def details(request,id):
     mynew=New.objects.filter(id=id)
-    return render(request,"portal/html/details.html",{'new':mynew})
+    images=[]
+   
+    if mynew.first().media2:
+        images.append(mynew.first().media2)
+    if mynew.first().media3:
+        images.append(mynew.first().media3)
+    if mynew.first().media4:
+        images.append(mynew.first().media4)
+    if mynew.first().media5:
+        images.append(mynew.first().media5)
+    if mynew.first().media6:
+        images.append(mynew.first().media6)
+    
+    return render(request,"portal/html/details.html",{'new':mynew,'images':images})
 
 def search(request):
     tosearch=request.GET["toSearch"]+"%"
     news=New.objects.raw("SELECT * FROM news where title like %s",[tosearch]) 
     events=Event.objects.raw("SELECT * FROM events where Description like %s",[tosearch]) 
-    resources=Resource.objects.raw("SELECT * FROM resources where description like %s",[tosearch]) 
     data={
         'news' : serialize('json',news),
         'events' : serialize('json',events),
-        'resources' : serialize('json',resources)
     }
     return JsonResponse(data)
     
 
-
-# def getResources(request):
-#     data={
-#         'menus' : serialize('json',Menu.objects.all())
-#     }
-#     return JsonResponse(data)
